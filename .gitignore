@@ -1,0 +1,16 @@
+﻿node_modules/
+videos/
+*.mp4
+.wrangler/
+*.tar.gz
+deploy-*.js
+surge-auth.js
+fix_*.py
+check_i18n*.py
+transform_i18n.py
+redesign.py
+.surgeignore
+.wranglerignore
+*.log
+.DS_Store
+Thumbs.db
