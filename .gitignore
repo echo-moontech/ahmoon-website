@@ -1,6 +1,4 @@
-﻿node_modules/
-videos/
-*.mp4
+node_modules/
 .wrangler/
 *.tar.gz
 deploy-*.js
