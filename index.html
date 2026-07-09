@@ -1908,6 +1908,7 @@
                 <h3 id="modalTitle" data-i18n="modalTitle">Product Details</h3>
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
+            <img id="modalImage" src="" alt="" style="display:none; width:100%; max-height:260px; object-fit:cover; border-radius:8px; margin-bottom:16px;">
             <div class="modal-body" id="modalBody">
                 <!-- Dynamic content -->
             </div>
@@ -2658,174 +2659,217 @@
             const products = {
                 kh550: {
                     title: 'KH-550 (3-Aminopropyltriethoxysilane)',
+                    image: 'images/kh-550.png',
                     content: function(l) { return window.generateModalContent('kh550', l); }
                 },
                 kh540: {
                     title: 'KH-540 (3-Aminopropyltrimethoxysilane)',
+                    image: 'images/kh540.png',
                     content: function(l) { return window.generateModalContent('kh540', l); }
                 },
                 m310: {
                     title: 'M-310 (N-[3-(trimethoxysilyl) propyl] n-butylamine)',
+                    image: 'images/m310.png',
                     content: function(l) { return window.generateModalContent('m310', l); }
                 },
                 v171: {
                     title: 'V-171 / VTMO (Vinyltrimethoxysilane)',
+                    image: 'images/v171.png',
                     content: function(l) { return window.generateModalContent('v171', l); }
                 },
                 v172: {
                     title: 'V-172 (Vinyltris(伪-methoxyethoxy)silane)',
+                    image: 'images/v172.png',
                     content: function(l) { return window.generateModalContent('v172', l); }
                 },
                 m145: {
                     title: 'M-145 (3-Chloropropyltriethoxysilane)',
+                    image: 'images/m145.png',
                     content: function(l) { return window.generateModalContent('m145', l); }
                 },
                 d10: {
                     title: 'D-10 / MTAS (Methyltriacetoxy-silane)',
+                    image: 'images/mtas.png',
                     content: function(l) { return window.generateModalContent('d10', l); }
                 },
                 d15: {
                     title: 'D-15 / ETAS (Ethyltriacetoxy-silane)',
+                    image: 'images/etas.png',
                     content: function(l) { return window.generateModalContent('d15', l); }
                 },
                 d16: {
                     title: 'D-16 / PTAS (Propyltriacetoxy-silane)',
+                    image: 'images/d16.png',
                     content: function(l) { return window.generateModalContent('d16', l); }
                 },
                 d20: {
                     title: 'D-20 / MTMS (Methyltrimethoxysilane)',
+                    image: 'images/mtms.png',
                     content: function(l) { return window.generateModalContent('d20', l); }
                 },
                 kh560: {
                     title: 'KH-560 (3-Glycidoxypropyltrimethoxysilane)',
+                    image: 'images/kh560.png',
                     content: function(l) { return window.generateModalContent('kh560', l); }
                 },
                 kh570: {
                     title: 'KH-570 (3-Methacryloxypropyltrimethoxysilane)',
+                    image: 'images/kh570.jpg',
                     content: function(l) { return window.generateModalContent('kh570', l); }
                 },
                 kh590: {
                     title: 'KH-590 (3-Mercaptopropyltrimethoxysilane)',
+                    image: 'images/kh590.jpg',
                     content: function(l) { return window.generateModalContent('kh590', l); }
                 },
                 kh602: {
                     title: 'KH-602 (N-(2-Aminoethyl)-3-aminopropylmethyldimethoxysilane)',
+                    image: 'images/kh602.png',
                     content: function(l) { return window.generateModalContent('kh602', l); }
                 },
                 kh792: {
                     title: 'KH-792 (N-(2-Aminoethyl)-3-aminopropyltrimethoxysilane)',
+                    image: 'images/kh792.jpg',
                     content: function(l) { return window.generateModalContent('kh792', l); }
                 },
                 d30: {
                     title: 'D-30 (Methyl Trimethyl Ethyl Ketoxime Silane)',
+                    image: 'images/d30.png',
                     content: function(l) { return window.generateModalContent('d30', l); }
                 },
                 d31: {
                     title: 'D-31 (Methyl Mixed Fatty Crosslinkers MOS/TOS)',
+                    image: 'images/d31.jpg',
                     content: function(l) { return window.generateModalContent('d31', l); }
                 },
                 si28: {
                     title: 'SI-28 (Tetraethyl Orthosilicate / TEOS)',
+                    image: 'images/si28.jpg',
                     content: function(l) { return window.generateModalContent('si28', l); }
                 },
                 d70: {
                     title: 'D-70 (Dibutyltin Diacetate / DBTDA)',
+                    image: 'images/d70.jpg',
                     content: function(l) { return window.generateModalContent('d70', l); }
                 },
                 d80: {
                     title: 'D-80 (Dibutyltin Dilaurate / DBTDL)',
+                    image: 'images/d80.jpg',
                     content: function(l) { return window.generateModalContent('d80', l); }
                 },
                 si40: {
                     title: 'SI-40 (D-130) - Tetraethoxysilane-40',
+                    image: 'images/si40.jpg',
                     content: function(l) { return window.generateModalContent('si40', l); }
                 },
                 a151: {
                     title: 'A-151 - Vinyl Triethoxysilane',
+                    image: 'images/a151.png',
                     content: function(l) { return window.generateModalContent('a151', l); }
                 },
                 vos: {
                     title: 'VOS (D-90) - Vinyltris(methylethylketoxime)silane',
+                    image: 'images/vos.png',
                     content: function(l) { return window.generateModalContent('vos', l); }
                 },
                 hdtms: {
                     title: 'HDTMS (M-9116) - Hexadecyl Trimethoxysilane',
+                    image: 'images/hdtms.jpg',
                     content: function(l) { return window.generateModalContent('hdtms', l); }
                 },
                 v4: {
                     title: 'V4 (VMC) - Tetravinyltetramethylcyclotetrasiloxane',
+                    image: 'images/v4.jpg',
                     content: function(l) { return window.generateModalContent('v4', l); }
                 },
                 m513: {
                     title: 'M-513 (MOON-6341) - N-Octyl Triethoxysilane',
+                    image: 'images/m513.jpg',
                     content: function(l) { return window.generateModalContent('m513', l); }
                 },
                 potassium: {
                     title: 'Potassium Methylsiliconate',
+                    image: 'images/potassium-methylsiliconate.jpg',
                     content: function(l) { return window.generateModalContent('potassium', l); }
                 },
                 heptamethyl: {
                     title: 'Heptamethyltrisiloxane',
+                    image: 'images/heptamethyl.jpg',
                     content: function(l) { return window.generateModalContent('heptamethyl', l); }
                 },
                 f823: {
                     title: 'F823 - Perfluorooctane Triethoxysilane',
+                    image: 'images/f823.jpg',
                     content: function(l) { return window.generateModalContent('f823', l); }
                 },
                 dimethyl: {
                     title: 'Dimethyl Silicone Oil (201 Series)',
+                    image: 'images/dimethyl-silicone-oil.jpg',
                     content: function(l) { return window.generateModalContent('dimethyl', l); }
                 },
                 phenyl: {
                     title: 'Phenyl Silicone Oil (255 Series)',
+                    image: 'images/methyl-phenyl-silicone-oil.png',
                     content: function(l) { return window.generateModalContent('phenyl', l); }
                 },
                 'vinyl-oil': {
                     title: 'Vinyl Silicone Oil',
+                    image: 'images/vinyl-silicone-oil.png',
                     content: function(l) { return window.generateModalContent('vinyl-oil', l); }
                 },
                 m274: {
                     title: 'MOON M-274 (Diffusion Pump Silicone Oil)',
+                    image: 'images/m274-ai.jpg',
                     content: function(l) { return window.generateModalContent('m274', l); }
                 },
                 m275: {
                     title: 'MOON M-275 (Diffusion Pump Silicone Oil)',
+                    image: 'images/m275-ai.jpg',
                     content: function(l) { return window.generateModalContent('m275', l); }
                 },
                 moon1401: {
                     title: 'MOON-1401 (Dimethicone & Cyclopentasiloxane)',
+                    image: 'images/moon1401-ai.jpg',
                     content: function(l) { return window.generateModalContent('moon1401', l); }
                 },
                 moon207b: {
                     title: 'Moon-207B (Cyclopentasiloxane & Dimethiconol)',
+                    image: 'images/moon207b-ai.jpg',
                     content: function(l) { return window.generateModalContent('moon207b', l); }
                 },
                 dc556: {
                     title: 'DC-556 (Phenylmethyltrimethylsiloxane)',
+                    image: 'images/dc556-ai.jpg',
                     content: function(l) { return window.generateModalContent('dc556', l); }
                 },
                 my651: {
                     title: 'M651 (Cyclopentasiloxane & Dimethicone Crosspolymer)',
+                    image: 'images/my651-ai.jpg',
                     content: function(l) { return window.generateModalContent('my651', l); }
                 },
                 pt5000: {
                     title: 'PT-5000 (Karstedt Platinum Catalyst 5000ppm)',
+                    image: 'images/pt5000-ai.jpg',
                     content: function(l) { return window.generateModalContent('pt5000', l); }
                 },
                 me610: {
                     title: 'M-E610 (Two-Component RTV-2 Silicone Rubber)',
+                    image: 'images/me610-ai.jpg',
                     content: function(l) { return window.generateModalContent('me610', l); }
                 },
                 platinum: {
                     title: 'Platinum Catalyst (Karstedt)',
+                    image: 'images/pc-8000ppm.png',
                     content: function(l) { return window.generateModalContent('platinum', l); }
                 },
                 em3232: {
                     title: 'MOON EM-3232 (Polydimethylsiloxane Emulsion 60%)',
+                    image: 'images/emulsion-em3232.png',
                     content: function(l) { return window.generateModalContent('em3232', l); }
                 },
                 em3235: {
                     title: 'MOON EM-3235 (Polydimethylsiloxane Emulsion 35%)',
+                    image: 'images/emulsion-em3232.png',
                     content: function(l) { return window.generateModalContent('em3235', l); }
                 }
             };
@@ -2833,6 +2877,13 @@
             const p = products[product];
             if (p) {
                 title.textContent = p.title;
+                var imgEl = document.getElementById('modalImage');
+                if (p.image) {
+                    imgEl.src = p.image;
+                    imgEl.style.display = 'block';
+                } else {
+                    imgEl.style.display = 'none';
+                }
                 body.innerHTML = p.content(lang);
                 modal.classList.add('active');
             }
