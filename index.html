@@ -399,6 +399,117 @@
         .products {
             background: var(--bg-alt);
         }
+        
+        /* Products Layout: Left Nav + Right Content */
+        .products-layout {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        
+        /* Left Category Navigation */
+        .cat-nav {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            background: var(--bg-alt);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            padding: 20px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+        .cat-nav-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+        }
+        .cat-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 6px;
+        }
+        .cat-nav-item:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .cat-nav-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        .cat-nav-item.active .cat-nav-count {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .cat-nav-icon {
+            font-size: 20px;
+            width: 28px;
+            text-align: center;
+        }
+        .cat-nav-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .cat-nav-count {
+            font-size: 12px;
+            background: var(--bg);
+            color: var(--text-muted);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        
+        /* Right Content Area */
+        .cat-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .cat-section {
+            margin-bottom: 48px;
+            scroll-margin-top: 120px;
+        }
+        .cat-section:last-child {
+            margin-bottom: 0;
+        }
+        .cat-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--primary);
+        }
+        .cat-section-icon {
+            font-size: 28px;
+        }
+        .cat-section-header h3 {
+            flex: 1;
+            font-size: 22px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .cat-section-count {
+            font-size: 13px;
+            color: var(--text-muted);
+            background: var(--bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        /* Legacy styles (kept for compatibility) */
         .product-category {
             margin-bottom: 56px;
         }
@@ -911,6 +1022,38 @@
             }
         }
         
+        /* Responsive: Products Layout */
+        @media (max-width: 1024px) {
+            .products-layout {
+                flex-direction: column;
+            }
+            .cat-nav {
+                width: 100%;
+                position: static;
+                max-height: none;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 16px;
+            }
+            .cat-nav-title {
+                width: 100%;
+                margin-bottom: 12px;
+            }
+            .cat-nav-item {
+                width: auto;
+                margin-bottom: 0;
+                padding: 8px 14px;
+                white-space: nowrap;
+            }
+            .cat-nav-text {
+                font-size: 13px;
+            }
+            .cat-nav-count {
+                display: none;
+            }
+        }
+        
         @media (max-width: 480px) {
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -931,6 +1074,15 @@
             }
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            .cat-section-header h3 {
+                font-size: 18px;
+            }
+            .cat-section-icon {
+                font-size: 22px;
+            }
+            .cat-section-count {
+                display: none;
             }
         }
     </style>
@@ -1053,7 +1205,7 @@
         </div>
     </section>
     
-    <!-- Products Section -->
+        <!-- Products Section -->
     <section class="products" id="products">
         <div class="container">
             <div class="search-no-results" data-i18n="searchNoResults">😕 No products found matching your search. Try a different keyword.</div>
@@ -1062,750 +1214,662 @@
                 <p data-i18n="productsSubtitle">High Quality Silicone Materials & Solutions</p>
             </div>
             
-            <!-- Silane Coupling Agent Category -->
-            <div class="product-category">
-                <div class="category-header">
-                    <div class="category-icon">🧪</div>
-                    <div>
-                        <h3 data-i18n="catSilaneAgent">Silane Coupling Agent</h3>
-                        <p style="color: var(--text-light); font-size: 14px;" data-i18n="catSilaneAgentSub">Amino Silane | Vinyl Silane | Epoxy Silane | Mercapto Silane | Diamine Silane | Chloropropyl Silane | Crosslinker</p>
-                    </div>
-                </div>
+            <div class="products-layout">
+                <!-- Left Navigation -->
+                <nav class="cat-nav">
+                    <div class="cat-nav-title" data-i18n="browseByCategory">Browse by Category</div>
+                <a href="#silane-coupling" class="cat-nav-item" data-target="silane-coupling">
+                    <span class="cat-nav-icon">🧪</span>
+                    <span class="cat-nav-text" data-i18n="catSilaneAgent">Silane Coupling Agent</span>
+                    <span class="cat-nav-count">15</span>
+                </a>
+                <a href="#silane-intermediates" class="cat-nav-item" data-target="silane-intermediates">
+                    <span class="cat-nav-icon">⚗️</span>
+                    <span class="cat-nav-text" data-i18n="catSilaneIntermediates">Silane Intermediates</span>
+                    <span class="cat-nav-count">10</span>
+                </a>
+                <a href="#waterproofing" class="cat-nav-item" data-target="waterproofing">
+                    <span class="cat-nav-icon">💧</span>
+                    <span class="cat-nav-text" data-i18n="catWaterproof">Waterproofing & Sealants</span>
+                    <span class="cat-nav-count">7</span>
+                </a>
+                <a href="#emulsion" class="cat-nav-item" data-target="emulsion">
+                    <span class="cat-nav-icon">🧴</span>
+                    <span class="cat-nav-text" data-i18n="catEmulsion">Silicone Emulsion Series</span>
+                    <span class="cat-nav-count">8</span>
+                </a>
+                <a href="#platinum" class="cat-nav-item" data-target="platinum">
+                    <span class="cat-nav-icon">💎</span>
+                    <span class="cat-nav-text" data-i18n="catPlatinum">Platinum Catalyst</span>
+                    <span class="cat-nav-count">2</span>
+                </a>
+                <a href="#rtv2" class="cat-nav-item" data-target="rtv2">
+                    <span class="cat-nav-icon">🏭</span>
+                    <span class="cat-nav-text" data-i18n="catRTV2">RTV-2 Silicone Rubber</span>
+                    <span class="cat-nav-count">1</span>
+                </a>
+                </nav>
                 
-                <!-- Amino Silane Sub-category -->
-                <div class="sub-category">
-                    <h4 class="sub-category-title" data-i18n="subAminosilane">Amino Silane</h4>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="openModal('kh550')">
-                            <div class="product-image">
-                                <img src="images/kh-550.png" alt="KH-550">
-                            </div>
-                            <div class="product-info">
-                                <h4>KH-550</h4>
-                                <div class="cas">CAS: 919-30-2</div>
-                                <p data-i18n="prod_kh550_desc">3-Aminopropyltriethoxysilane - Enhanced adhesion for thermoplastic and thermosetting resins.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥98%</span>
-                                    <span class="product-tag" data-i18n="tagThermosetting">Thermosetting</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="openModal('kh540')">
-                            <div class="product-image">
-                                <img src="images/kh540.png" alt="KH-540">
-                            </div>
-                            <div class="product-info">
-                                <h4>KH-540</h4>
-                                <div class="cas">CAS: 13822-56-5</div>
-                                <p data-i18n="prod_kh540_desc">γ-Aminopropyltrimethoxysilane - High reactivity coupling agent.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥98%</span>
-                                    <span class="product-tag" data-i18n="tagHighReactivity">High Reactivity</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="openModal('m310')">
-                            <div class="product-image">
-                                <img src="images/m310.png" alt="M-310">
-                            </div>
-                            <div class="product-info">
-                                <h4>M-310</h4>
-                                <div class="cas">CAS: 31024-56-3</div>
-                                <p data-i18n="prod_m310_desc">N-[3-(trimethoxysilyl) propyl] n-butylamine - Anti-UV, anti-yellowing for PU sealant.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥97%</span>
-                                    <span class="product-tag" data-i18n="tagAntiUV">Anti-UV</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Right Content -->
+                <div class="cat-content">
+            <!-- Silane Coupling Agent -->
+            <div id="silane-coupling" class="cat-section">
+                <div class="cat-section-header">
+                    <span class="cat-section-icon">🧪</span>
+                    <h3 data-i18n="catSilaneAgent">Silane Coupling Agent</h3>
+                    <span class="cat-section-count">15 products</span>
                 </div>
-                
-                <!-- Vinyl Silane Sub-category -->
-                <div class="sub-category">
-                    <h4 class="sub-category-title" data-i18n="subVinylsilane">Vinyl Silane</h4>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="openModal('v171')">
-                            <div class="product-image">
-                                <img src="images/v171.png" alt="V-171">
-                            </div>
-                            <div class="product-info">
-                                <h4>V-171 (VTMO)</h4>
-                                <div class="cas">CAS: 2768-02-7</div>
-                                <p data-i18n="prod_v171_desc">Vinyltrimethoxysilane - Crosslinking agent for silane crosslinked PE (XLPE).</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥98%</span>
-                                    <span class="product-tag" data-i18n="tagXLPE">XLPE</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="openModal('v172')">
-                            <div class="product-image">
-                                <img src="images/v172.png" alt="V-172">
-                            </div>
-                            <div class="product-info">
-                                <h4>V-172</h4>
-                                <div class="cas">CAS: 1067-53-4</div>
-                                <p data-i18n="prod_v172_desc">Vinyltris(α-methoxyethoxy)silane - Adhesion promoter for mineral-filled polymers.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥99%</span>
-                                    <span class="product-tag" data-i18n="tagAdhesion">Adhesion</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Chloropropyl Silane Sub-category -->
-                <div class="sub-category">
-                    <h4 class="sub-category-title" data-i18n="subChloropropyl">Chloropropyl Silane</h4>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="openModal('m145')">
-                            <div class="product-image">
-                                <img src="images/m145.png" alt="M-145">
-                            </div>
-                            <div class="product-info">
-                                <h4>M-145</h4>
-                                <div class="cas">CAS: 5089-70-3</div>
-                                <p data-i18n="prod_m145_desc">3-Chloropropyltriethoxysilane - Reinforcing agent for rubber and composites.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥98%</span>
-                                    <span class="product-tag" data-i18n="tagRubber">Rubber</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Crosslinker Sub-category -->
-                <div style="margin-left: 20px;">
-                    <h4 class="sub-category-title" data-i18n="subAcetoxy">Acetoxy Silane Crosslinker</h4>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="openModal('d10')">
-                            <div class="product-image">
-                                <img src="images/mtas.png" alt="D-10">
-                            </div>
-                            <div class="product-info">
-                                <h4>D-10 (MTAS)</h4>
-                                <div class="cas">CAS: 4253-34-3</div>
-                                <p data-i18n="prod_d10_desc">Methyltriacetoxy-silane - Crosslinker for deacetic acid RTV-1 silicone sealant.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥90%</span>
-                                    <span class="product-tag" data-i18n="tagRTV1">RTV-1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="openModal('d15')">
-                            <div class="product-image">
-                                <img src="images/etas.png" alt="D-15">
-                            </div>
-                            <div class="product-info">
-                                <h4>D-15 (ETAS)</h4>
-                                <div class="cas">CAS: 17689-77-9</div>
-                                <p data-i18n="prod_d15_desc">Ethyltriacetoxy-silane - Crosslinker for acetoxy RTV silicone sealant.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥90%</span>
-                                    <span class="product-tag" data-i18n="tagSealant">Sealant</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="openModal('d16')">
-                            <div class="product-image">
-                                <img src="images/d16.png" alt="D-16">
-                            </div>
-                            <div class="product-info">
-                                <h4>D-16 (PTAS)</h4>
-                                <div class="cas">CAS: 17865-07-5</div>
-                                <p data-i18n="prod_d16_desc">Propyltriacetoxy-silane - Crosslinker for acetoxy RTV-1 sealants.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥95%</span>
-                                    <span class="product-tag" data-i18n="tagHighPurity">High Purity</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="openModal('d20')">
-                            <div class="product-image">
-                                <img src="images/mtms.png" alt="D-20">
-                            </div>
-                            <div class="product-info">
-                                <h4>D-20 (MTMS)</h4>
-                                <div class="cas">CAS: 1185-55-3</div>
-                                <p data-i18n="prod_d20_desc">Methyltrimethoxysilane - Water repellent, silica gel and silicone resin.</p>
-                                <div class="product-tags">
-                                    <span class="product-tag">≥98%</span>
-                                    <span class="product-tag" data-i18n="tagHydrophobic">Hydrophobic</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Epoxy Silane Sub-category -->
-            <div class="sub-category">
-                <h4 class="sub-category-title" data-i18n="subEpoxy">Epoxy Silane</h4>
                 <div class="products-grid">
+                    <div class="product-card" onclick="openModal('kh550')">
+                                                <div class="product-image">
+                                                    <img src="images/kh-550.png" alt="KH-550">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>KH-550</h4>
+                                                    <div class="cas">CAS: 919-30-2</div>
+                                                    <p data-i18n="prod_kh550_desc">3-Aminopropyltriethoxysilane - Enhanced adhesion for thermoplastic and thermosetting resins.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥98%</span>
+                                                        <span class="product-tag" data-i18n="tagThermosetting">Thermosetting</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('kh540')">
+                                                <div class="product-image">
+                                                    <img src="images/kh540.png" alt="KH-540">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>KH-540</h4>
+                                                    <div class="cas">CAS: 13822-56-5</div>
+                                                    <p data-i18n="prod_kh540_desc">γ-Aminopropyltrimethoxysilane - High reactivity coupling agent.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥98%</span>
+                                                        <span class="product-tag" data-i18n="tagHighReactivity">High Reactivity</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('m310')">
+                                                <div class="product-image">
+                                                    <img src="images/m310.png" alt="M-310">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>M-310</h4>
+                                                    <div class="cas">CAS: 31024-56-3</div>
+                                                    <p data-i18n="prod_m310_desc">N-[3-(trimethoxysilyl) propyl] n-butylamine - Anti-UV, anti-yellowing for PU sealant.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥97%</span>
+                                                        <span class="product-tag" data-i18n="tagAntiUV">Anti-UV</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('v171')">
+                                                <div class="product-image">
+                                                    <img src="images/v171.png" alt="V-171">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>V-171 (VTMO)</h4>
+                                                    <div class="cas">CAS: 2768-02-7</div>
+                                                    <p data-i18n="prod_v171_desc">Vinyltrimethoxysilane - Crosslinking agent for silane crosslinked PE (XLPE).</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥98%</span>
+                                                        <span class="product-tag" data-i18n="tagXLPE">XLPE</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('v172')">
+                                                <div class="product-image">
+                                                    <img src="images/v172.png" alt="V-172">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>V-172</h4>
+                                                    <div class="cas">CAS: 1067-53-4</div>
+                                                    <p data-i18n="prod_v172_desc">Vinyltris(α-methoxyethoxy)silane - Adhesion promoter for mineral-filled polymers.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥99%</span>
+                                                        <span class="product-tag" data-i18n="tagAdhesion">Adhesion</span>
+                                                    </div>
+                                                </div>
                     <div class="product-card" onclick="openModal('kh560')">
-                        <div class="product-image">
-                            <img src="images/kh560.png" alt="KH-560">
-                        </div>
-                        <div class="product-info">
-                            <h4>KH-560</h4>
-                            <div class="cas">CAS: 2530-83-8</div>
-                            <p data-i18n="prod_kh560_desc">3-Glycidoxypropyltrimethoxysilane - Epoxy-functional silane for enhanced adhesion.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagEpoxy">Epoxy</span>
-                                <span class="product-tag" data-i18n="tagAdhesion">Adhesion</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/kh560.png" alt="KH-560">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>KH-560</h4>
+                                                <div class="cas">CAS: 2530-83-8</div>
+                                                <p data-i18n="prod_kh560_desc">3-Glycidoxypropyltrimethoxysilane - Epoxy-functional silane for enhanced adhesion.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagEpoxy">Epoxy</span>
+                                                    <span class="product-tag" data-i18n="tagAdhesion">Adhesion</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('kh570')">
-                        <div class="product-image">
-                            <img src="images/kh570.jpg" alt="KH-570">
-                        </div>
-                        <div class="product-info">
-                            <h4>KH-570</h4>
-                            <div class="cas">CAS: 2530-85-0</div>
-                            <p data-i18n="prod_kh570_desc">3-Methacryloxypropyltrimethoxysilane - Methacrylate-functional silane for unsaturated polyesters.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagMethacrylate">Methacrylate</span>
-                                <span class="product-tag" data-i18n="tagFiberglass">Fiberglass</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Mercapto Silane Sub-category -->
-            <div class="sub-category">
-                <h4 class="sub-category-title" data-i18n="subMercapto">Mercapto Silane</h4>
-                <div class="products-grid">
+                                            <div class="product-image">
+                                                <img src="images/kh570.jpg" alt="KH-570">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>KH-570</h4>
+                                                <div class="cas">CAS: 2530-85-0</div>
+                                                <p data-i18n="prod_kh570_desc">3-Methacryloxypropyltrimethoxysilane - Methacrylate-functional silane for unsaturated polyesters.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagMethacrylate">Methacrylate</span>
+                                                    <span class="product-tag" data-i18n="tagFiberglass">Fiberglass</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('kh590')">
-                        <div class="product-image">
-                            <img src="images/kh590.jpg" alt="KH-590">
-                        </div>
-                        <div class="product-info">
-                            <h4>KH-590</h4>
-                            <div class="cas">CAS: 4420-74-0</div>
-                            <p data-i18n="prod_kh590_desc">3-Mercaptopropyltrimethoxysilane - Mercapto-functional coupling agent for rubber and elastomers.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagMercapto">Mercapto</span>
-                                <span class="product-tag" data-i18n="tagRubber">Rubber</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Diamine Silane Sub-category -->
-            <div class="sub-category">
-                <h4 class="sub-category-title" data-i18n="subDiamine">Diamine Silane</h4>
-                <div class="products-grid">
+                                            <div class="product-image">
+                                                <img src="images/kh590.jpg" alt="KH-590">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>KH-590</h4>
+                                                <div class="cas">CAS: 4420-74-0</div>
+                                                <p data-i18n="prod_kh590_desc">3-Mercaptopropyltrimethoxysilane - Mercapto-functional coupling agent for rubber and elastomers.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagMercapto">Mercapto</span>
+                                                    <span class="product-tag" data-i18n="tagRubber">Rubber</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('kh602')">
-                        <div class="product-image">
-                            <img src="images/kh602.png" alt="KH-602">
-                        </div>
-                        <div class="product-info">
-                            <h4>KH-602</h4>
-                            <div class="cas">CAS: 3069-29-2</div>
-                            <p data-i18n="prod_kh602_desc">N-(2-aminoethyl)-3-aminopropylmethyldimethoxysilane - Diamine silane for epoxy and phenolic resins.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagDiamine">Diamine</span>
-                                <span class="product-tag" data-i18n="tagEpoxy">Epoxy</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/kh602.png" alt="KH-602">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>KH-602</h4>
+                                                <div class="cas">CAS: 3069-29-2</div>
+                                                <p data-i18n="prod_kh602_desc">N-(2-aminoethyl)-3-aminopropylmethyldimethoxysilane - Diamine silane for epoxy and phenolic resins.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagDiamine">Diamine</span>
+                                                    <span class="product-tag" data-i18n="tagEpoxy">Epoxy</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('kh792')">
-                        <div class="product-image">
-                            <img src="images/kh792.jpg" alt="KH-792">
-                        </div>
-                        <div class="product-info">
-                            <h4>KH-792</h4>
-                            <div class="cas">CAS: 1760-24-3</div>
-                            <p data-i18n="prod_kh792_desc">N-(2-aminoethyl)-3-aminopropyltrimethoxysilane - Diamine silane for epoxy, nylon, and phenolic composites.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagDiamine">Diamine</span>
-                                <span class="product-tag" data-i18n="tagComposites">Composites</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/kh792.jpg" alt="KH-792">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>KH-792</h4>
+                                                <div class="cas">CAS: 1760-24-3</div>
+                                                <p data-i18n="prod_kh792_desc">N-(2-aminoethyl)-3-aminopropyltrimethoxysilane - Diamine silane for epoxy, nylon, and phenolic composites.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagDiamine">Diamine</span>
+                                                    <span class="product-tag" data-i18n="tagComposites">Composites</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('m145')">
+                                                <div class="product-image">
+                                                    <img src="images/m145.png" alt="M-145">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>M-145</h4>
+                                                    <div class="cas">CAS: 5089-70-3</div>
+                                                    <p data-i18n="prod_m145_desc">3-Chloropropyltriethoxysilane - Reinforcing agent for rubber and composites.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥98%</span>
+                                                        <span class="product-tag" data-i18n="tagRubber">Rubber</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('d10')">
+                                                <div class="product-image">
+                                                    <img src="images/mtas.png" alt="D-10">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>D-10 (MTAS)</h4>
+                                                    <div class="cas">CAS: 4253-34-3</div>
+                                                    <p data-i18n="prod_d10_desc">Methyltriacetoxy-silane - Crosslinker for deacetic acid RTV-1 silicone sealant.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥90%</span>
+                                                        <span class="product-tag" data-i18n="tagRTV1">RTV-1</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('d15')">
+                                                <div class="product-image">
+                                                    <img src="images/etas.png" alt="D-15">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>D-15 (ETAS)</h4>
+                                                    <div class="cas">CAS: 17689-77-9</div>
+                                                    <p data-i18n="prod_d15_desc">Ethyltriacetoxy-silane - Crosslinker for acetoxy RTV silicone sealant.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥90%</span>
+                                                        <span class="product-tag" data-i18n="tagSealant">Sealant</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('d16')">
+                                                <div class="product-image">
+                                                    <img src="images/d16.png" alt="D-16">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>D-16 (PTAS)</h4>
+                                                    <div class="cas">CAS: 17865-07-5</div>
+                                                    <p data-i18n="prod_d16_desc">Propyltriacetoxy-silane - Crosslinker for acetoxy RTV-1 sealants.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥95%</span>
+                                                        <span class="product-tag" data-i18n="tagHighPurity">High Purity</span>
+                                                    </div>
+                                                </div>
+                    <div class="product-card" onclick="openModal('d20')">
+                                                <div class="product-image">
+                                                    <img src="images/mtms.png" alt="D-20">
+                                                </div>
+                                                <div class="product-info">
+                                                    <h4>D-20 (MTMS)</h4>
+                                                    <div class="cas">CAS: 1185-55-3</div>
+                                                    <p data-i18n="prod_d20_desc">Methyltrimethoxysilane - Water repellent, silica gel and silicone resin.</p>
+                                                    <div class="product-tags">
+                                                        <span class="product-tag">≥98%</span>
+                                                        <span class="product-tag" data-i18n="tagHydrophobic">Hydrophobic</span>
+                                                    </div>
+                                                </div>
                 </div>
             </div>
-            <!-- Specialty Silanes Sub-category -->
-            <div style="margin-left: 20px; margin-bottom: 40px;">
-                <h4 class="sub-category-title" data-i18n="subSpecialty">Specialty Silanes &amp; Catalysts</h4>
+            <!-- Silane Intermediates -->
+            <div id="silane-intermediates" class="cat-section">
+                <div class="cat-section-header">
+                    <span class="cat-section-icon">⚗️</span>
+                    <h3 data-i18n="catSilaneIntermediates">Silane Intermediates</h3>
+                    <span class="cat-section-count">10 products</span>
+                </div>
                 <div class="products-grid">
                     <div class="product-card" onclick="openModal('d30')">
-                        <div class="product-image">
-                            <img src="images/d30.png" alt="D-30">
-                        </div>
-                        <div class="product-info">
-                            <h4>D-30</h4>
-                            <div class="cas">CAS: 22984-54-9</div>
-                            <p data-i18n="prod_d30_desc">Methyl trimethyl ethyl ketoxime silane - Oxime crosslinker for RTV sealants.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagSilane">Silane</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/d30.png" alt="D-30">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>D-30</h4>
+                                                <div class="cas">CAS: 22984-54-9</div>
+                                                <p data-i18n="prod_d30_desc">Methyl trimethyl ethyl ketoxime silane - Oxime crosslinker for RTV sealants.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagSilane">Silane</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('d31')">
-                        <div class="product-image">
-                            <img src="images/d31.jpg" alt="D-31">
-                        </div>
-                        <div class="product-info">
-                            <h4>D-31</h4>
-                            <div class="cas">MOS/TOS Blend</div>
-                            <p data-i18n="prod_d31_desc">Methyl mixed fatty crosslinkers (MOS/TOS 80/20) - Oxime crosslinker blend.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagSilane">Silane</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/d31.jpg" alt="D-31">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>D-31</h4>
+                                                <div class="cas">MOS/TOS Blend</div>
+                                                <p data-i18n="prod_d31_desc">Methyl mixed fatty crosslinkers (MOS/TOS 80/20) - Oxime crosslinker blend.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagSilane">Silane</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('si28')">
-                        <div class="product-image">
-                            <img src="images/si28.jpg" alt="SI-28">
-                        </div>
-                        <div class="product-info">
-                            <h4>SI-28</h4>
-                            <div class="cas">CAS: 78-10-4</div>
-                            <p data-i18n="prod_si28_desc">Tetraethyl orthosilicate (TEOS) - Crosslinker and binder for coatings.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagSilane">Silane</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/si28.jpg" alt="SI-28">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>SI-28</h4>
+                                                <div class="cas">CAS: 78-10-4</div>
+                                                <p data-i18n="prod_si28_desc">Tetraethyl orthosilicate (TEOS) - Crosslinker and binder for coatings.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagSilane">Silane</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('d70')">
-                        <div class="product-image">
-                            <img src="images/d70.jpg" alt="D-70">
-                        </div>
-                        <div class="product-info">
-                            <h4>D-70 (DBTDA)</h4>
-                            <div class="cas">CAS: 1067-33-0</div>
-                            <p data-i18n="prod_d70_desc">Dibutyltin diacetate - Organotin catalyst for RTV silicone sealant systems.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagCatalyst">Catalyst</span>
-                                <span class="product-tag" data-i18n="tagRTV">RTV</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/d70.jpg" alt="D-70">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>D-70 (DBTDA)</h4>
+                                                <div class="cas">CAS: 1067-33-0</div>
+                                                <p data-i18n="prod_d70_desc">Dibutyltin diacetate - Organotin catalyst for RTV silicone sealant systems.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagCatalyst">Catalyst</span>
+                                                    <span class="product-tag" data-i18n="tagRTV">RTV</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('d80')">
-                        <div class="product-image">
-                            <img src="images/d80.jpg" alt="D-80">
-                        </div>
-                        <div class="product-info">
-                            <h4>D-80 (DBTDL)</h4>
-                            <div class="cas">CAS: 77-58-7</div>
-                            <p data-i18n="prod_d80_desc">Dibutyltin dilaurate - Tin catalyst for polyurethane and silicone elastomers.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagCatalyst">Catalyst</span>
-                                <span class="product-tag" data-i18n="tagPU">PU</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Silane Intermediates & Specialty Category -->
-            <div class="product-category" style="margin-top: 60px;">
-                <div class="category-header">
-                    <div class="category-icon">🔬</div>
-                    <div>
-                        <h3 data-i18n="catSilaneIntermediates">Silane Intermediates & Specialty Products</h3>
-                        <p style="color: var(--text-light); font-size: 14px;" data-i18n="catSilaneIntermediatesSub">Silicate Intermediates | Oxime Silane | Specialty Silanes | Waterproofing Agents</p>
-                    </div>
-                </div>
-                <div class="products-grid">
+                                            <div class="product-image">
+                                                <img src="images/d80.jpg" alt="D-80">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>D-80 (DBTDL)</h4>
+                                                <div class="cas">CAS: 77-58-7</div>
+                                                <p data-i18n="prod_d80_desc">Dibutyltin dilaurate - Tin catalyst for polyurethane and silicone elastomers.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagCatalyst">Catalyst</span>
+                                                    <span class="product-tag" data-i18n="tagPU">PU</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('si40')">
-                        <div class="product-image">
-                            <img src="images/si40.jpg" alt="SI-40">
-                        </div>
-                        <div class="product-info">
-                            <h4>SI-40 (D-130)</h4>
-                            <div class="cas">CAS: 11099-06-2</div>
-                            <p data-i18n="prod_si40_desc">Tetraethoxysilane-40 - Ethyl silicate with 40-42% SiO2 content for inorganic binders.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagBinder">Binder</span>
-                                <span class="product-tag" data-i18n="tagSolgel">Sol-gel</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/si40.jpg" alt="SI-40">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>SI-40 (D-130)</h4>
+                                                <div class="cas">CAS: 11099-06-2</div>
+                                                <p data-i18n="prod_si40_desc">Tetraethoxysilane-40 - Ethyl silicate with 40-42% SiO2 content for inorganic binders.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagBinder">Binder</span>
+                                                    <span class="product-tag" data-i18n="tagSolgel">Sol-gel</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('a151')">
-                        <div class="product-image">
-                            <img src="images/a151.png" alt="A-151">
-                        </div>
-                        <div class="product-info">
-                            <h4>A-151</h4>
-                            <div class="cas">CAS: 78-08-0</div>
-                            <p data-i18n="prod_a151_desc">Vinyl triethoxysilane - Crosslinking agent for XLPE and surface treatment.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagXLPE">XLPE</span>
-                                <span class="product-tag" data-i18n="tagWireCable">Wire & Cable</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/a151.png" alt="A-151">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>A-151</h4>
+                                                <div class="cas">CAS: 78-08-0</div>
+                                                <p data-i18n="prod_a151_desc">Vinyl triethoxysilane - Crosslinking agent for XLPE and surface treatment.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagXLPE">XLPE</span>
+                                                    <span class="product-tag" data-i18n="tagWireCable">Wire & Cable</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('vos')">
-                        <div class="product-image">
-                            <img src="images/vos.png" alt="VOS">
-                        </div>
-                        <div class="product-info">
-                            <h4>VOS (D-90)</h4>
-                            <div class="cas">CAS: 2224-33-1</div>
-                            <p data-i18n="prod_vos_desc">Vinyltris(methylethylketoxime)silane - Neutral curing agent for sealants.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagSealant">Sealant</span>
-                                <span class="product-tag" data-i18n="tagCuringAgent">Curing Agent</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/vos.png" alt="VOS">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>VOS (D-90)</h4>
+                                                <div class="cas">CAS: 2224-33-1</div>
+                                                <p data-i18n="prod_vos_desc">Vinyltris(methylethylketoxime)silane - Neutral curing agent for sealants.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagSealant">Sealant</span>
+                                                    <span class="product-tag" data-i18n="tagCuringAgent">Curing Agent</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('hdtms')">
-                        <div class="product-image">
-                            <img src="images/hdtms.jpg" alt="HDTMS">
-                        </div>
-                        <div class="product-info">
-                            <h4>HDTMS (M-9116)</h4>
-                            <div class="cas">CAS: 16415-12-6</div>
-                            <p data-i18n="prod_hdtms_desc">Hexadecyl trimethoxysilane - Long chain alkyl silane for hydrophobic treatment.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagHydrophobic">Hydrophobic</span>
-                                <span class="product-tag" data-i18n="tagLongChain">Long Chain</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/hdtms.jpg" alt="HDTMS">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>HDTMS (M-9116)</h4>
+                                                <div class="cas">CAS: 16415-12-6</div>
+                                                <p data-i18n="prod_hdtms_desc">Hexadecyl trimethoxysilane - Long chain alkyl silane for hydrophobic treatment.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagHydrophobic">Hydrophobic</span>
+                                                    <span class="product-tag" data-i18n="tagLongChain">Long Chain</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('v4')">
-                        <div class="product-image">
-                            <img src="images/v4.jpg" alt="V4">
-                        </div>
-                        <div class="product-info">
-                            <h4>V4 (VMC)</h4>
-                            <div class="cas">CAS: 2554-06-5</div>
-                            <p data-i18n="prod_v4_desc">Tetravinyltetramethylcyclotetrasiloxane - Crosslinker for vinyl silicone rubber.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagCrosslinker">Crosslinker</span>
-                                <span class="product-tag" data-i18n="tagVMQ">VMQ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card" onclick="openModal('m513')">
-                        <div class="product-image">
-                            <img src="images/m513.jpg" alt="M-513">
-                        </div>
-                        <div class="product-info">
-                            <h4>M-513 (MOON-6341)</h4>
-                            <div class="cas">CAS: 2943-75-1</div>
-                            <p data-i18n="prod_m513_desc">N-Octyl triethoxysilane - Waterproofing agent for construction materials.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagWaterproofing">Waterproofing</span>
-                                <span class="product-tag" data-i18n="tagConstruction">Construction</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card" onclick="openModal('potassium')">
-                        <div class="product-image">
-                            <img src="images/potassium-methylsiliconate.jpg" alt="Potassium Methylsiliconate">
-                        </div>
-                        <div class="product-info">
-                            <h4>Potassium Methylsiliconate</h4>
-                            <div class="cas">CAS: 31795-24-1</div>
-                            <p data-i18n="prod_potassium_desc">Water-based waterproofing agent for porous materials like stone and cement.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagWaterproofing">Waterproofing</span>
-                                <span class="product-tag" data-i18n="tagWaterbased">Water-based</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card" onclick="openModal('heptamethyl')">
-                        <div class="product-image">
-                            <img src="images/heptamethyl.jpg" alt="Heptamethyltrisiloxane">
-                        </div>
-                        <div class="product-info">
-                            <h4>Heptamethyltrisiloxane</h4>
-                            <div class="cas">CAS: 1873-88-7</div>
-                            <p data-i18n="prod_heptamethyl_desc">Widely used in cosmetics, windshield coating, and food additives.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagCosmetics">Cosmetics</span>
-                                <span class="product-tag" data-i18n="tagFoodGrade">Food Grade</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card" onclick="openModal('f823')">
-                        <div class="product-image">
-                            <img src="images/f823.jpg" alt="F823">
-                        </div>
-                        <div class="product-info">
-                            <h4>F823</h4>
-                            <div class="cas">CAS: 51851-37-7</div>
-                            <p data-i18n="prod_f823_desc">Perfluorooctane triethoxysilane - For anti-fouling and anti-stick coatings.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagFluoroSilane">Fluoro Silane</span>
-                                <span class="product-tag" data-i18n="tagAntifouling">Anti-fouling</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/v4.jpg" alt="V4">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>V4 (VMC)</h4>
+                                                <div class="cas">CAS: 2554-06-5</div>
+                                                <p data-i18n="prod_v4_desc">Tetravinyltetramethylcyclotetrasiloxane - Crosslinker for vinyl silicone rubber.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagCrosslinker">Crosslinker</span>
+                                                    <span class="product-tag" data-i18n="tagVMQ">VMQ</span>
+                                                </div>
+                                            </div>
                 </div>
             </div>
-            
-            <!-- Silicone Oil Category -->
-            <div class="product-category" style="margin-top: 60px;">
-                <div class="category-header">
-                    <div class="category-icon">💧</div>
-                    <div>
-                        <h3 data-i18n="catSiliconeOil">Silicone Oil</h3>
-                        <p style="color: var(--text-light); font-size: 14px;" data-i18n="catSiliconeOilSub">Dimethyl Silicone Oil | Phenyl Silicone Oil | Vinyl Silicone Oil</p>
-                    </div>
+            <!-- Waterproofing & Sealants -->
+            <div id="waterproofing" class="cat-section">
+                <div class="cat-section-header">
+                    <span class="cat-section-icon">💧</span>
+                    <h3 data-i18n="catWaterproof">Waterproofing & Sealants</h3>
+                    <span class="cat-section-count">7 products</span>
                 </div>
                 <div class="products-grid">
+                    <div class="product-card" onclick="openModal('potassium')">
+                                            <div class="product-image">
+                                                <img src="images/potassium-methylsiliconate.jpg" alt="Potassium Methylsiliconate">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Potassium Methylsiliconate</h4>
+                                                <div class="cas">CAS: 31795-24-1</div>
+                                                <p data-i18n="prod_potassium_desc">Water-based waterproofing agent for porous materials like stone and cement.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagWaterproofing">Waterproofing</span>
+                                                    <span class="product-tag" data-i18n="tagWaterbased">Water-based</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('heptamethyl')">
+                                            <div class="product-image">
+                                                <img src="images/heptamethyl.jpg" alt="Heptamethyltrisiloxane">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Heptamethyltrisiloxane</h4>
+                                                <div class="cas">CAS: 1873-88-7</div>
+                                                <p data-i18n="prod_heptamethyl_desc">Widely used in cosmetics, windshield coating, and food additives.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagCosmetics">Cosmetics</span>
+                                                    <span class="product-tag" data-i18n="tagFoodGrade">Food Grade</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('m513')">
+                                            <div class="product-image">
+                                                <img src="images/m513.jpg" alt="M-513">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>M-513 (MOON-6341)</h4>
+                                                <div class="cas">CAS: 2943-75-1</div>
+                                                <p data-i18n="prod_m513_desc">N-Octyl triethoxysilane - Waterproofing agent for construction materials.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagWaterproofing">Waterproofing</span>
+                                                    <span class="product-tag" data-i18n="tagConstruction">Construction</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('f823')">
+                                            <div class="product-image">
+                                                <img src="images/f823.jpg" alt="F823">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>F823</h4>
+                                                <div class="cas">CAS: 51851-37-7</div>
+                                                <p data-i18n="prod_f823_desc">Perfluorooctane triethoxysilane - For anti-fouling and anti-stick coatings.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagFluoroSilane">Fluoro Silane</span>
+                                                    <span class="product-tag" data-i18n="tagAntifouling">Anti-fouling</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('dimethyl')">
-                        <div class="product-image">
-                            <img src="images/dimethyl-silicone-oil.jpg" alt="Dimethyl Silicone Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>Dimethyl Silicone Oil</h4>
-                            <div class="cas">201 Series</div>
-                            <p data-i18n="prod_dimethyl_desc">High purity silicone oil with excellent thermal stability and low surface tension.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tag350cst">350-10000cst</span>
-                                <span class="product-tag" data-i18n="tagCosmeticGrade">Cosmetic Grade</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/dimethyl-silicone-oil.jpg" alt="Dimethyl Silicone Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Dimethyl Silicone Oil</h4>
+                                                <div class="cas">201 Series</div>
+                                                <p data-i18n="prod_dimethyl_desc">High purity silicone oil with excellent thermal stability and low surface tension.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tag350cst">350-10000cst</span>
+                                                    <span class="product-tag" data-i18n="tagCosmeticGrade">Cosmetic Grade</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('phenyl')">
-                        <div class="product-image">
-                            <img src="images/methyl-phenyl-silicone-oil.png" alt="Phenyl Silicone Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>Phenyl Silicone Oil</h4>
-                            <div class="cas">255 Series</div>
-                            <p data-i18n="prod_phenyl_desc">Excellent high temperature resistance and radiation stability.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagHighTemp">High Temp</span>
-                                <span class="product-tag" data-i18n="tagRadiationResistant">Radiation Resistant</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/methyl-phenyl-silicone-oil.png" alt="Phenyl Silicone Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Phenyl Silicone Oil</h4>
+                                                <div class="cas">255 Series</div>
+                                                <p data-i18n="prod_phenyl_desc">Excellent high temperature resistance and radiation stability.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagHighTemp">High Temp</span>
+                                                    <span class="product-tag" data-i18n="tagRadiationResistant">Radiation Resistant</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('vinyl-oil')">
-                        <div class="product-image">
-                            <img src="images/vinyl-silicone-oil.png" alt="Vinyl Silicone Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>Vinyl Silicone Oil</h4>
-                            <div class="cas">Vinyl Silicone Oil</div>
-                            <p data-i18n="prod_vinyl_oil_desc">Essential raw material for addition-cure silicone rubber.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagLSRGrade">LSR Grade</span>
-                                <span class="product-tag" data-i18n="tagHTV">HTV</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/vinyl-silicone-oil.png" alt="Vinyl Silicone Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Vinyl Silicone Oil</h4>
+                                                <div class="cas">Vinyl Silicone Oil</div>
+                                                <p data-i18n="prod_vinyl_oil_desc">Essential raw material for addition-cure silicone rubber.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagLSRGrade">LSR Grade</span>
+                                                    <span class="product-tag" data-i18n="tagHTV">HTV</span>
+                                                </div>
+                                            </div>
                 </div>
             </div>
-
-            <!-- Silicone Emulsion Category -->
-            <div class="product-category" style="margin-top: 60px;">
-                <div class="category-header">
-                    <div class="category-icon">🧴</div>
-                    <div>
-                        <h3 data-i18n="catSiliconeEmulsion">Silicone Emulsion</h3>
-                        <p style="color: var(--text-light); font-size: 14px;" data-i18n="catSiliconeEmulsionSub">Polydimethylsiloxane Emulsion | Nonionic | APEO-Free</p>
-                    </div>
+            <!-- Silicone Emulsion Series -->
+            <div id="emulsion" class="cat-section">
+                <div class="cat-section-header">
+                    <span class="cat-section-icon">🧴</span>
+                    <h3 data-i18n="catEmulsion">Silicone Emulsion Series</h3>
+                    <span class="cat-section-count">8 products</span>
                 </div>
                 <div class="products-grid">
                     <div class="product-card" onclick="openModal('em3232')">
-                        <div class="product-image">
-                            <img src="images/emulsion-em3232.png" alt="Polydimethylsiloxane Emulsion EM-3232">
-                        </div>
-                        <div class="product-info">
-                            <h4>MOON EM-3232</h4>
-                            <div class="cas">60% Solid Content</div>
-                            <p data-i18n="prod_em3232_desc">Ready-to-use nonionic silicone emulsion for polishing, release and textile lubrication.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagNonionic">Nonionic</span>
-                                <span class="product-tag" data-i18n="tagAPEOFree">APEO-Free</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/emulsion-em3232.png" alt="Polydimethylsiloxane Emulsion EM-3232">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>MOON EM-3232</h4>
+                                                <div class="cas">60% Solid Content</div>
+                                                <p data-i18n="prod_em3232_desc">Ready-to-use nonionic silicone emulsion for polishing, release and textile lubrication.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagNonionic">Nonionic</span>
+                                                    <span class="product-tag" data-i18n="tagAPEOFree">APEO-Free</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('em3235')">
-                        <div class="product-image">
-                            <img src="images/emulsion-em3232.png" alt="Polydimethylsiloxane Emulsion EM-3235">
-                        </div>
-                        <div class="product-info">
-                            <h4>MOON EM-3235</h4>
-                            <div class="cas">35% Solid Content</div>
-                            <p data-i18n="prod_em3235_desc">Nonionic silicone emulsion for textile finishing, polish ingredients and general lubrication.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tagNonionic">Nonionic</span>
-                                <span class="product-tag" data-i18n="tag35pct">35% Solid</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/emulsion-em3232.png" alt="Polydimethylsiloxane Emulsion EM-3235">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>MOON EM-3235</h4>
+                                                <div class="cas">35% Solid Content</div>
+                                                <p data-i18n="prod_em3235_desc">Nonionic silicone emulsion for textile finishing, polish ingredients and general lubrication.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tagNonionic">Nonionic</span>
+                                                    <span class="product-tag" data-i18n="tag35pct">35% Solid</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('m274')">
+                                            <div class="product-image">
+                                                <img src="images/m274-ai.jpg" alt="M-274 Diffusion Pump Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>MOON M-274</h4>
+                                                <div class="cas">Diffusion Pump Oil</div>
+                                                <p data-i18n="prod_m274_desc">Ultra high vacuum diffusion pump silicone oil. Low saturated vapor pressure, excellent thermal stability.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">38±2 mm²/s</span>
+                                                    <span class="product-tag" data-i18n="tagHighVacuum">High Vacuum</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('m275')">
+                                            <div class="product-image">
+                                                <img src="images/m275-ai.jpg" alt="M-275 Diffusion Pump Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>MOON M-275</h4>
+                                                <div class="cas">Diffusion Pump Oil</div>
+                                                <p data-i18n="prod_m275_desc">Ultra high vacuum diffusion pump silicone oil. Superior oxidation resistance, 98% main content.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">165-185 mm²/s</span>
+                                                    <span class="product-tag" data-i18n="tagHighVacuum">High Vacuum</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('moon1401')">
+                                            <div class="product-image">
+                                                <img src="images/moon1401-ai.jpg" alt="Moon-1401 Silicone Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>MOON-1401</h4>
+                                                <div class="cas">Dimethicone & Cyclopentasiloxane</div>
+                                                <p data-i18n="prod_moon1401_desc">Velvety silky skin feel, ideal for hair care and skin care products. Forms a soft protective film.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">6000-8000 cst</span>
+                                                    <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('moon207b')">
+                                            <div class="product-image">
+                                                <img src="images/moon207b-ai.jpg" alt="Moon-207B Silicone Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Moon-207B</h4>
+                                                <div class="cas">Cyclopentasiloxane & Dimethiconol</div>
+                                                <p data-i18n="prod_moon207b_desc">High viscosity dimethiconol in cyclopentasiloxane. Equivalent to DC-245. Ideal for cosmetics and toiletries.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">5000-8000 cst</span>
+                                                    <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('dc556')">
+                                            <div class="product-image">
+                                                <img src="images/dc556-ai.jpg" alt="DC-556 Phenyl Silicone Oil">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>DC-556</h4>
+                                                <div class="cas">Phenylmethyltrimethylsiloxane</div>
+                                                <p data-i18n="prod_dc556_desc">High refraction rate phenyl silicone oil. Provides high gloss for hair and bright appearance for lip balm and cream.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">23±3 mm²/s</span>
+                                                    <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
+                                                </div>
+                                            </div>
+                    <div class="product-card" onclick="openModal('my651')">
+                                            <div class="product-image">
+                                                <img src="images/my651-ai.jpg" alt="MY-651 Silicone Elastomer">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>M651</h4>
+                                                <div class="cas">Cyclopentasiloxane & Dimethicone Crosspolymer</div>
+                                                <p data-i18n="prod_my651_desc">Silicone elastomer gel. Fast-drying, velvety skin feel, powdery texture. Long-lasting skin feel.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">300k-600k cst</span>
+                                                    <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
+                                                </div>
+                                            </div>
                 </div>
             </div>
-
-            
-                    <!-- M-274 Diffusion Pump Oil -->
-                    <div class="product-card" onclick="openModal('m274')">
-                        <div class="product-image">
-                            <img src="images/m274-ai.jpg" alt="M-274 Diffusion Pump Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>MOON M-274</h4>
-                            <div class="cas">Diffusion Pump Oil</div>
-                            <p data-i18n="prod_m274_desc">Ultra high vacuum diffusion pump silicone oil. Low saturated vapor pressure, excellent thermal stability.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">38±2 mm²/s</span>
-                                <span class="product-tag" data-i18n="tagHighVacuum">High Vacuum</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- M-275 Diffusion Pump Oil -->
-                    <div class="product-card" onclick="openModal('m275')">
-                        <div class="product-image">
-                            <img src="images/m275-ai.jpg" alt="M-275 Diffusion Pump Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>MOON M-275</h4>
-                            <div class="cas">Diffusion Pump Oil</div>
-                            <p data-i18n="prod_m275_desc">Ultra high vacuum diffusion pump silicone oil. Superior oxidation resistance, 98% main content.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">165-185 mm²/s</span>
-                                <span class="product-tag" data-i18n="tagHighVacuum">High Vacuum</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Moon-1401 Silicone Oil -->
-                    <div class="product-card" onclick="openModal('moon1401')">
-                        <div class="product-image">
-                            <img src="images/moon1401-ai.jpg" alt="Moon-1401 Silicone Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>MOON-1401</h4>
-                            <div class="cas">Dimethicone & Cyclopentasiloxane</div>
-                            <p data-i18n="prod_moon1401_desc">Velvety silky skin feel, ideal for hair care and skin care products. Forms a soft protective film.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">6000-8000 cst</span>
-                                <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Moon-207B Silicone Oil -->
-                    <div class="product-card" onclick="openModal('moon207b')">
-                        <div class="product-image">
-                            <img src="images/moon207b-ai.jpg" alt="Moon-207B Silicone Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>Moon-207B</h4>
-                            <div class="cas">Cyclopentasiloxane & Dimethiconol</div>
-                            <p data-i18n="prod_moon207b_desc">High viscosity dimethiconol in cyclopentasiloxane. Equivalent to DC-245. Ideal for cosmetics and toiletries.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">5000-8000 cst</span>
-                                <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DC-556 Phenyl Silicone Oil -->
-                    <div class="product-card" onclick="openModal('dc556')">
-                        <div class="product-image">
-                            <img src="images/dc556-ai.jpg" alt="DC-556 Phenyl Silicone Oil">
-                        </div>
-                        <div class="product-info">
-                            <h4>DC-556</h4>
-                            <div class="cas">Phenylmethyltrimethylsiloxane</div>
-                            <p data-i18n="prod_dc556_desc">High refraction rate phenyl silicone oil. Provides high gloss for hair and bright appearance for lip balm and cream.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">23±3 mm²/s</span>
-                                <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- MY-651 Silicone Elastomer -->
-                    <div class="product-card" onclick="openModal('my651')">
-                        <div class="product-image">
-                            <img src="images/my651-ai.jpg" alt="MY-651 Silicone Elastomer">
-                        </div>
-                        <div class="product-info">
-                            <h4>M651</h4>
-                            <div class="cas">Cyclopentasiloxane & Dimethicone Crosspolymer</div>
-                            <p data-i18n="prod_my651_desc">Silicone elastomer gel. Fast-drying, velvety skin feel, powdery texture. Long-lasting skin feel.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">300k-600k cst</span>
-                                <span class="product-tag" data-i18n="tagCosmetic">Cosmetic Grade</span>
-                            </div>
-                        </div>
-                    </div>
-
-<!-- Catalyst Category -->
-            <div class="product-category" style="margin-top: 60px;">
-                <div class="category-header">
-                    <div class="category-icon">⚡</div>
-                    <div>
-                        <h3 data-i18n="catPlatinum">Platinum Catalyst</h3>
-                        <p style="color: var(--text-light); font-size: 14px;" data-i18n="catPlatinumSub">Karstedt Catalyst for Addition-Cure Silicone</p>
-                    </div>
+            <!-- Platinum Catalyst -->
+            <div id="platinum" class="cat-section">
+                <div class="cat-section-header">
+                    <span class="cat-section-icon">💎</span>
+                    <h3 data-i18n="catPlatinum">Platinum Catalyst</h3>
+                    <span class="cat-section-count">2 products</span>
                 </div>
                 <div class="products-grid">
                     <div class="product-card" onclick="openModal('platinum')">
-                        <div class="product-image">
-                            <img src="images/pc-8000ppm.png" alt="Platinum Catalyst">
-                        </div>
-                        <div class="product-info">
-                            <h4>Platinum Catalyst</h4>
-                            <div class="cas">Karstedt</div>
-                            <p data-i18n="prod_platinum_desc">Karstedt catalyst for addition-cure silicone systems (LSR, HTV).</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-i18n="tag5000ppm">5000ppm</span>
-                                <span class="product-tag" data-i18n="tag8000ppm">8000ppm</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PT-5000 Platinum Catalyst -->
+                                            <div class="product-image">
+                                                <img src="images/pc-8000ppm.png" alt="Platinum Catalyst">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Platinum Catalyst</h4>
+                                                <div class="cas">Karstedt</div>
+                                                <p data-i18n="prod_platinum_desc">Karstedt catalyst for addition-cure silicone systems (LSR, HTV).</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag" data-i18n="tag5000ppm">5000ppm</span>
+                                                    <span class="product-tag" data-i18n="tag8000ppm">8000ppm</span>
+                                                </div>
+                                            </div>
                     <div class="product-card" onclick="openModal('pt5000')">
-                        <div class="product-image">
-                            <img src="images/pt5000-ai.jpg" alt="PT-5000 Platinum Catalyst">
-                        </div>
-                        <div class="product-info">
-                            <h4>PT-5000</h4>
-                            <div class="cas">Karstedt Catalyst</div>
-                            <p data-i18n="prod_pt5000_desc">Karstedt zero-valence platinum complex catalyst. 5000ppm platinum content, high activity, anti-yellowing.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">5000ppm</span>
-                                <span class="product-tag">ROHS/REACH</span>
-                            </div>
-                        </div>
-                    </div>
-
+                                            <div class="product-image">
+                                                <img src="images/pt5000-ai.jpg" alt="PT-5000 Platinum Catalyst">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>PT-5000</h4>
+                                                <div class="cas">Karstedt Catalyst</div>
+                                                <p data-i18n="prod_pt5000_desc">Karstedt zero-valence platinum complex catalyst. 5000ppm platinum content, high activity, anti-yellowing.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">5000ppm</span>
+                                                    <span class="product-tag">ROHS/REACH</span>
+                                                </div>
+                                            </div>
                 </div>
             </div>
-            
-            <!-- RTV-2 Silicone Rubber Category -->
-            <div class="product-category" style="margin-top: 60px;">
-                <div class="category-header">
-                    <div class="category-icon">?</div>
-                    <div>
-                        <h3 data-i18n="catRTV2">RTV-2 Silicone Rubber</h3>
-                        <p style="color: var(--text-light); font-size: 14px;" data-i18n="catRTV2Sub">Two-Component Addition-Cure Silicone Rubber</p>
-                    </div>
+            <!-- RTV-2 Silicone Rubber -->
+            <div id="rtv2" class="cat-section">
+                <div class="cat-section-header">
+                    <span class="cat-section-icon">🏭</span>
+                    <h3 data-i18n="catRTV2">RTV-2 Silicone Rubber</h3>
+                    <span class="cat-section-count">1 products</span>
                 </div>
                 <div class="products-grid">
-                    <!-- M-E610 RTV-2 -->
                     <div class="product-card" onclick="openModal('me610')">
-                        <div class="product-image">
-                            <img src="images/me610-ai.jpg" alt="M-E610 RTV-2 Silicone Rubber">
-                        </div>
-                        <div class="product-info">
-                            <h4>M-E610</h4>
-                            <div class="cas">RTV-2 / Addition Cure</div>
-                            <p data-i18n="prod_me610_desc">Two-component platinum-cure silicone rubber. Flowable, cures at room temperature or heated. FDA food grade.</p>
-                            <div class="product-tags">
-                                <span class="product-tag">1800±500 cps</span>
-                                <span class="product-tag">FDA</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="product-image">
+                                                <img src="images/me610-ai.jpg" alt="M-E610 RTV-2 Silicone Rubber">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>M-E610</h4>
+                                                <div class="cas">RTV-2 / Addition Cure</div>
+                                                <p data-i18n="prod_me610_desc">Two-component platinum-cure silicone rubber. Flowable, cures at room temperature or heated. FDA food grade.</p>
+                                                <div class="product-tags">
+                                                    <span class="product-tag">1800±500 cps</span>
+                                                    <span class="product-tag">FDA</span>
+                                                </div>
+                                            </div>
                 </div>
             </div>
-            
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2057,6 +2121,12 @@
                 tagNonionic: "Nonionic",
                 tagAPEOFree: "APEO-Free",
                 tag35pct: "35% Solid",
+                // Category Nav
+                browseByCategory: "Browse by Category",
+                catSilaneIntermediates: "Silane Intermediates",
+                catWaterproof: "Waterproofing & Sealants",
+                catEmulsion: "Silicone Emulsion Series",
+                catPlatinum: "Platinum Catalyst",
                 // Factory
                 factoryTitle: "Factory Tour",
                 factorySubtitle: "Modern Production Facilities",
@@ -2222,6 +2292,12 @@
                 tagNonionic: "非离子",
                 tagAPEOFree: "无APEO",
                 tag35pct: "35%固含量",
+                // Category Nav
+                browseByCategory: "按分类浏览",
+                catSilaneIntermediates: "硅烷中间体",
+                catWaterproof: "防水密封剂",
+                catEmulsion: "硅油乳液系列",
+                catPlatinum: "铂金催化剂",
                 // Factory
                 factoryTitle: "工厂参观",
                 factorySubtitle: "现代化生产设施",
@@ -2387,6 +2463,12 @@
                 tagNonionic: "No Ionica",
                 tagAPEOFree: "Sin APEO",
                 tag35pct: "35% Solido",
+                // Category Nav
+                browseByCategory: "Navegar por Categoría",
+                catSilaneIntermediates: "Intermedios de Silano",
+                catWaterproof: "Impermeabilización y Selladores",
+                catEmulsion: "Serie de Emulsión de Silicona",
+                catPlatinum: "Catalizador de Platino",
                 // Factory
                 factoryTitle: "Tour de la Fábrica",
                 factorySubtitle: "Instalaciones de Producción Modernas",
@@ -2620,7 +2702,7 @@
         function searchProducts(query) {
             query = query.trim().toLowerCase();
             const cards = document.querySelectorAll('.product-card');
-            const sections = document.querySelectorAll('.category-section');
+            const sections = document.querySelectorAll('.cat-section');
             const noResults = document.querySelector('.search-no-results');
             
             if (!query) {
@@ -2650,6 +2732,44 @@
                 noResults.style.display = matchCount === 0 ? 'block' : 'none';
             }
         }
+
+        // ─── Category Navigation ───
+        function initCategoryNav() {
+            const navItems = document.querySelectorAll('.cat-nav-item');
+            const sections = document.querySelectorAll('.cat-section');
+            
+            // Smooth scroll on nav click
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = item.getAttribute('data-target');
+                    const section = document.getElementById(target);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Update active state
+                        navItems.forEach(n => n.classList.remove('active'));
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navItems.forEach(item => {
+                            item.classList.toggle('active', item.getAttribute('data-target') === id);
+                        });
+                    }
+                });
+            }, { threshold: 0.3, rootMargin: '-100px 0px -50% 0px' });
+            
+            sections.forEach(section => observer.observe(section));
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initCategoryNav);
 
         // ─── Modal ───
         function openModal(product) {
