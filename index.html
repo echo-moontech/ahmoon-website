@@ -3086,18 +3086,10 @@
             };
 
             const s = specs[productKey] || '';
-            const propLabel = t ? t.descLabel : 'Description:';
             const appLabel = t ? t.appLabel : 'Applications';
             const pkgLabel = t ? t.packagingLabel : 'Packaging:';
             const noteLabel = t ? t.noteLabel : 'Note:';
             
-            // Description translations
-            const descMap = {
-                kh550: pt && pt.desc_kh550 ? pt.desc_kh550 : (enPkg ? enPkg.desc_kh550 : ''),
-                kh540: pt && pt.desc_kh540 ? pt.desc_kh540 : (enPkg ? enPkg.desc_kh540 : ''),
-                m310: pt && pt.desc_m310 ? pt.desc_m310 : (enPkg ? enPkg.desc_m310 : ''),
-            };
-
             // Application lists
             const getApps = function(pk) {
                 const key = 'app_' + pk;
@@ -3120,7 +3112,6 @@
                 em3235: '200L Plastic Drum (200kg), IBC Container (1000kg)',
             };
 
-            const descText = descMap[productKey] || descMap.kh550 || '';
             const apps = getApps(productKey);
             const pkgText = pkgMap[productKey] || '';
 
@@ -3152,8 +3143,7 @@
                 noteHtml = '<p style="margin-top:15px;"><strong>Storage:</strong> Cool and dry place, sealed package for one year</p>';
             }
 
-            let html = '<p><strong>' + propLabel + '</strong> ' + descText + '</p>';
-            html += '<table class="specs-table"><tr><th>Property</th><th>Specification</th></tr>' + s + '</table>';
+            let html = '<table class="specs-table"><tr><th>Property</th><th>Specification</th></tr>' + s + '</table>';
             html += appsHtml;
             html += pkgHtml;
             html += noteHtml;
