@@ -3143,7 +3143,23 @@
                 noteHtml = '<p style="margin-top:15px;"><strong>Storage:</strong> Cool and dry place, sealed package for one year</p>';
             }
 
-            let html = '<table class="specs-table"><tr><th>Property</th><th>Specification</th></tr>' + s + '</table>';
+            // Product model names
+            const modelMap = {
+                kh550:'KH-550',kh540:'KH-540',m310:'M-310',v171:'V-171 / VTMO',v172:'V-172',
+m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / MTMS',
+                kh560:'KH-560',kh570:'KH-570',kh590:'KH-590',kh602:'KH-602',kh792:'KH-792',
+                d30:'D-30',d31:'D-31',si28:'SI-28 / TEOS',d70:'D-70 / DBTDA',d80:'D-80 / DBTDL',
+                si40:'SI-40 / D-130',a151:'A-151',vos:'VOS / D-90',hdtms:'HDTMS / M-9116',
+                v4:'V4 / VMC',m513:'M-513 / MOON-6341',potassium:'Potassium Methylsiliconate',
+                heptamethyl:'Heptamethyltrisiloxane',f823:'F823',dimethyl:'Dimethyl Silicone Oil',
+                phenyl:'Phenyl Silicone Oil','vinyl-oil':'Vinyl Silicone Oil',
+                m274:'MOON M-274',m275:'MOON M-275',moon1401:'MOON-1401',
+                moon207b:'Moon-207B',dc556:'DC-556',my651:'M651 / MOON-651',
+                pt5000:'PT-5000',me610:'M-E610',platinum:'Platinum Catalyst',
+                em3232:'MOON EM-3232',em3235:'MOON EM-3235',
+            };
+            const modelName = modelMap[productKey] || productKey;
+            let html = '<table class="specs-table"><tr><th>Model</th><th>' + modelName + '</th></tr>' + s + '</table>';
             html += appsHtml;
             html += pkgHtml;
             html += noteHtml;
