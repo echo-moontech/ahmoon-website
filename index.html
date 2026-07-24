@@ -3240,6 +3240,25 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
             // Download files map — only products with MSDS/TDS files
             const dlMap = {
                 dimethyl: { tds: 'downloads/Moon-TDS-201-350.pdf', msds: 'downloads/Moon-MSDS-201-350.pdf' },
+                d10:      { tds: 'downloads/Moon-TDS-D10.pdf',     msds: 'downloads/Moon-MSDS-D10.pdf' },
+                d20:      { tds: null,                            msds: 'downloads/Moon-MSDS-D20.pdf' },
+                d15:      { tds: 'downloads/Moon-TDS-D15.pdf',   msds: null },
+                d16:      { tds: 'downloads/Moon-TDS-D16.pdf',    msds: 'downloads/Moon-MSDS-D16.pdf' },
+                d30:      { tds: null,                            msds: 'downloads/Moon-MSDS-D30.pdf' },
+                d31:      { tds: 'downloads/Moon-TDS-D31.pdf',    msds: 'downloads/Moon-MSDS-D31.pdf' },
+                d70:      { tds: 'downloads/Moon-TDS-D70.pdf',   msds: 'downloads/Moon-MSDS-D70.pdf' },
+                d80:      { tds: 'downloads/Moon-TDS-D80.pdf',    msds: 'downloads/Moon-MSDS-D80.pdf' },
+                si28:     { tds: 'downloads/Moon-TDS-Si28.pdf',   msds: 'downloads/Moon-MSDS-Si28.pdf' },
+                kh550:    { tds: 'downloads/Moon-TDS-KH550.pdf',   msds: 'downloads/Moon-MSDS-KH550.pdf' },
+                kh560:    { tds: 'downloads/Moon-TDS-KH560.pdf',  msds: 'downloads/Moon-MSDS-KH560.pdf' },
+                kh570:    { tds: 'downloads/Moon-TDS-KH570.pdf',  msds: null },
+                kh590:    { tds: 'downloads/Moon-TDS-LT590.pdf',  msds: null },
+                kh602:    { tds: 'downloads/Moon-TDS-KH602.pdf',  msds: null },
+                kh792:    { tds: 'downloads/Moon-TDS-KH792.pdf',  msds: null },
+                m145:     { tds: null,                            msds: 'downloads/Moon-MSDS-M145.pdf' },
+                m310:     { tds: 'downloads/Moon-TDS-M310.pdf',   msds: 'downloads/Moon-MSDS-M310.pdf' },
+                v171:     { tds: 'downloads/Moon-TDS-V171-CN.pdf',msds: 'downloads/Moon-MSDS-V171.pdf' },
+                v172:     { tds: 'downloads/Moon-TDS-V172.pdf',   msds: null },
             };
             // Build downloads HTML
             let downloadsHtml = '';
