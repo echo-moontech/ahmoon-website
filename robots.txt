@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmoontech.pages.dev/sitemap.xml
+
+# Block crawling of non-existent paths
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
