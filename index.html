@@ -905,6 +905,22 @@
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        .dl-btn {
+            display: inline-block;
+            padding: 7px 16px;
+            background: #f0f4ff;
+            border: 1.5px solid #0066CC;
+            border-radius: 6px;
+            color: #0066CC;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .dl-btn:hover {
+            background: #0066CC;
+            color: #fff;
+        }
         .modal-header {
             background: var(--primary);
             color: #fff;
@@ -3220,10 +3236,26 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
                 em3232:'MOON EM-3232',em3235:'MOON EM-3235',
             };
             const modelName = modelMap[productKey] || productKey;
+
+            // Download files map — only products with MSDS/TDS files
+            const dlMap = {
+                dimethyl: { tds: 'downloads/Moon-TDS-201-350.pdf', msds: 'downloads/Moon-MSDS-201-350.pdf' },
+            };
+            // Build downloads HTML
+            let downloadsHtml = '';
+            const dl = dlMap[productKey];
+            if (dl) {
+                downloadsHtml = '<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">';
+                if (dl.tds) downloadsHtml += '<a href="' + dl.tds + '" target="_blank" class="dl-btn">📄 Download TDS</a>';
+                if (dl.msds) downloadsHtml += '<a href="' + dl.msds + '" target="_blank" class="dl-btn">🧪 Download MSDS</a>';
+                downloadsHtml += '</div>';
+            }
+
             let html = '<table class="specs-table"><tr><th>Model</th><th>' + modelName + '</th></tr>' + s + '</table>';
             html += appsHtml;
             html += pkgHtml;
             html += noteHtml;
+            html += downloadsHtml;
             return html;
         };
 
