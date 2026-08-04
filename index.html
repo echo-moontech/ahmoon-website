@@ -921,6 +921,114 @@
             background: #0066CC;
             color: #fff;
         }
+
+        /* ── Floating WhatsApp Button ── */
+        #floatingWhatsApp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            background: #25D366;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37,211,102,.45);
+            text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+        }
+        #floatingWhatsApp:hover {
+            transform: scale(1.12);
+            box-shadow: 0 6px 22px rgba(37,211,102,.55);
+        }
+
+        /* ── Inquiry Form Modal ── */
+        .inquiry-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        .inquiry-overlay.active { display: flex; }
+        .inquiry-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 28px 22px;
+            width: 520px;
+            max-width: 96vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 12px 48px rgba(0,0,0,.18);
+            animation: modalSlide .25s ease;
+        }
+        .inquiry-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+        }
+        .inquiry-close:hover { color: #333; }
+        .inquiry-box h3 {
+            margin: 0 0 4px;
+            font-size: 20px;
+            color: #1a3a6b;
+        }
+        .inq-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .inquiry-box input[type="text"],
+        .inquiry-box input[type="email"],
+        .inquiry-box input[type="tel"],
+        .inquiry-box textarea {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s;
+            min-width: 0;
+        }
+        .inquiry-box input:focus,
+        .inquiry-box textarea:focus {
+            border-color: #1a3a6b;
+        }
+        .inquiry-box textarea {
+            width: 100%;
+            box-sizing: border-box;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+        .inq-submit {
+            width: 100%;
+            padding: 13px;
+            background: #1a3a6b;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .inq-submit:hover { background: #264d8f; }
+        #inqStatus { text-align: center; }
+        #inqStatus.ok { color: #25A843; }
+        #inqStatus.err { color: #D93025; }
         .modal-header {
             background: var(--primary);
             color: #fff;
@@ -2072,7 +2180,39 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/8618154230550?text=Hi%20Moon%20Tech%2C%20I%27m%20interested%20in%20your%20silicone%20products." target="_blank" id="floatingWhatsApp" title="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" width="36" height="36"><path fill="#FFF" d="M16 1C7.7 1 1 7.7 1 16c0 2.8.8 5.5 2.2 7.7L1 31l8.1-2.3C11.5 30.2 13.7 31 16 31c8.3 0 15-6.7 15-15S24.3 1 16 1zm-1 5h1c.6 0 1 .4 1 1v1h1c.6 0 1.2.4 1.2 1v1c0 .6-.4 1-1 1h-1v1c0 .6-.4 1-1 1h-1c-.6 0-1-.4-1-1v-1h-1c-.6 0-1-.4-1-1v-1c0-.6.4-1 1-1h1V7c0-.6.4-1 1-1z"/><path fill="#25D3" d="M16 1C7.7 1 1 7.7 1 16c0 2.8.8 5.5 2.2 7.7L1 31l8.1-2.3C11.5 30.2 13.7 31 16 31c8.3 0 15-6.7 15-15S24.3 1 16 1zm7.7 21.5c-.4.9-1.4 1.6-2.4 1.9-.7.2-1.5.3-2.4.2-1.8-.2-3.5-.8-4.8-1.9-1.3-1.1-2.4-2.6-3.1-4.4-.4-1.1-.5-2.2-.4-3.3.1-1.1.5-2.1 1-3 .2-.3.3-.6.3-1 0-.4-.2-.7-.4-1l-.7-1c-.1-.2-.2-.3-.2-.5.1-.3.3-.7.5-1 .4-.6 1-1 1.6-1.4.6-.4 1.3-.7 2-.8.2 0 .4-.1.5-.1.1 0 .2.1.3.2l1.2 1c.1.1.2.2.2.4v.4c.1.6.4 1.1.7 1.6l.6.9c.1.2.2.4 0 .6l-.6.9c-.1.2-.3.4-.5.6-.4.3-.9.6-1.4.7-.2 0-.4.1-.5.2-.1.1 0 .3.1.4l.8.8c.2.2.4.5.6.7.4.5.9.9 1.4 1.2.5.3 1 .5 1.5.6.5.1 1.1.1 1.7 0 .5-.1 1-.2 1.4-.4.4-.2.7-.4.9-.6.2-.2.3-.4.4-.6 0-.1 0-.2-.1-.3l-.3-.9zm-2-3.4c-.5 0-1-.1-1.4-.4-.4-.3-.7-.6-.9-1-.2-.4-.3-.8-.3-1.3 0-.5.1-.9.3-1.3.2-.4.5-.7.9-1 .4-.2.9-.4 1.4-.4s1 .1 1.4.4c.4.2.7.6.9 1 .2.4.3.8.3 1.3s-.1.9-.3 1.3c-.2.4-.5.7-.9 1-.4.2-.9.4-1.4.4z"/></svg>
+    </a>
+
+    <!-- Inquiry Form Modal -->
+    <div class="inquiry-overlay" id="inquiryOverlay" onclick="if(event.target===this)closeInquiryForm()">
+        <div class="inquiry-box">
+            <button class="inquiry-close" onclick="closeInquiryForm()">&times;</button>
+            <h3>Send Inquiry</h3>
+            <p id="inquiryProduct" style="margin:0 0 14px;font-size:13px;color:#555;"></p>
+            <form id="inquiryForm" onsubmit="submitInquiry(event)">
+                <input type="hidden" id="inqProduct" name="product">
+                <div class="inq-row">
+                    <input type="text" id="inqCompany" placeholder="Company Name *" required>
+                    <input type="text" id="inqName" placeholder="Your Name *" required>
+                </div>
+                <div class="inq-row">
+                    <input type="email" id="inqEmail" placeholder="Email Address *" required>
+                    <input type="tel" id="inqPhone" placeholder="WhatsApp / Phone">
+                </div>
+                <div class="inq-row">
+                    <input type="text" id="inqQty" placeholder="Quantity" style="flex:1;">
+                    <select id="inqUnit" style="flex:1;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;color:#333;"><option>kg</option><option>ton</option><option>drum</option><option>other</option></select>
+                </div>
+                <textarea id="inqMsg" placeholder="Your message... (product specs, application, etc.)" rows="4"></textarea>
+                <button type="submit" class="inq-submit">Send Inquiry</button>
+            </form>
+            <p id="inqStatus" style="margin:10px 0 0;font-size:13px;display:none;"></p>
+        </div>
+    </div>
+
     <script>
         // ─── Translation Dictionary ───
         window.translations = {
@@ -3286,6 +3426,11 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
                 downloadsHtml = '<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">';
                 if (dl.tds) downloadsHtml += '<a href="' + dl.tds + '" target="_blank" class="dl-btn">📄 Download TDS</a>';
                 if (dl.msds) downloadsHtml += '<a href="' + dl.msds + '" target="_blank" class="dl-btn">🧪 Download MSDS</a>';
+                downloadsHtml += '<button class="dl-btn" style="background:#1a3a6b;color:#fff;border:none;cursor:pointer;" onclick="openInquiryForm(\'' + productKey + '\')">💬 Send Inquiry</button>';
+                downloadsHtml += '</div>';
+            } else {
+                downloadsHtml = '<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">';
+                downloadsHtml += '<button class="dl-btn" style="background:#1a3a6b;color:#fff;border:none;cursor:pointer;" onclick="openInquiryForm(\'' + productKey + '\')">💬 Send Inquiry</button>';
                 downloadsHtml += '</div>';
             }
 
@@ -3299,6 +3444,65 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
 
         function closeModal() {
             document.getElementById('productModal').classList.remove('active');
+        }
+
+        // ── Inquiry Form ──
+        function openInquiryForm(productKey) {
+            var modelNames = {
+                kh550:'KH-550',kh540:'KH-540',m310:'M-310',v171:'V-171 / VTMO',v172:'V-172',
+                m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / MTMS',
+                kh560:'KH-560',kh570:'KH-570',kh590:'KH-590',kh602:'KH-602',kh792:'KH-792',
+                d30:'D-30',d31:'D-31',si28:'SI-28 / TEOS',d70:'D-70 / DBTDA',d80:'D-80 / DBTDL',
+                si40:'SI-40 / D-130',a151:'A-151',vos:'VOS / D-90',hdtms:'HDTMS / M-9116',
+                v4:'V4 / VMC',m513:'M-513 / MOON-6341',potassium:'Potassium Methylsiliconate',
+                heptamethyl:'Heptamethyltrisiloxane',f823:'F823',dimethyl:'Dimethyl Silicone Oil',
+                phenyl:'Phenyl Silicone Oil','vinyl-oil':'Vinyl Silicone Oil',
+                m274:'MOON M-274',m275:'MOON M-275',moon1401:'MOON-1401',
+                moon207b:'Moon-207B',dc556:'DC-556',my651:'M651 / MOON-651',
+                pt5000:'PT-5000',me610:'M-E610',platinum:'Platinum Catalyst',
+                em3232:'MOON EM-3232',em3235:'MOON EM-3235',
+            };
+            var name = modelNames[productKey] || productKey;
+            document.getElementById('inqProduct').value = name;
+            document.getElementById('inqProduct').textContent = 'Product: ' + name;
+            document.getElementById('inquiryProduct').textContent = 'Product: ' + name;
+            document.getElementById('inqMsg').value = '';
+            document.getElementById('inqStatus').style.display = 'none';
+            document.getElementById('inquiryOverlay').classList.add('active');
+        }
+
+        function closeInquiryForm() {
+            document.getElementById('inquiryOverlay').classList.remove('active');
+        }
+
+        function submitInquiry(e) {
+            e.preventDefault();
+            var product = document.getElementById('inqProduct').value || document.getElementById('inquiryProduct').textContent.replace('Product: ','');
+            var company = document.getElementById('inqCompany').value;
+            var name = document.getElementById('inqName').value;
+            var email = document.getElementById('inqEmail').value;
+            var phone = document.getElementById('inqPhone').value;
+            var qty = document.getElementById('inqQty').value;
+            var unit = document.getElementById('inqUnit').value;
+            var msg = document.getElementById('inqMsg').value;
+
+            var body = 'Inquiry from Moon Tech Website\n\n' +
+                'Product: ' + product + '\n' +
+                'Company: ' + company + '\n' +
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                (phone ? 'Phone/WhatsApp: ' + phone + '\n' : '') +
+                (qty ? 'Quantity: ' + qty + ' ' + unit + '\n' : '') +
+                (msg ? '\nMessage:\n' + msg : '');
+
+            var mailto = 'mailto:echo@ahmoontech.com?subject=Product Inquiry: ' + encodeURIComponent(product) +
+                '&body=' + encodeURIComponent(body);
+            window.location.href = mailto;
+
+            var status = document.getElementById('inqStatus');
+            status.textContent = '\u2709\ufe0f Opened! If your email app did not open, please email us directly: echo@ahmoontech.com';
+            status.className = 'ok';
+            status.style.display = 'block';
         }
 
         document.getElementById('productModal').addEventListener('click', function(e) {
