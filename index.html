@@ -3486,23 +3486,44 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
             var unit = document.getElementById('inqUnit').value;
             var msg = document.getElementById('inqMsg').value;
 
-            var body = 'Inquiry from Moon Tech Website\n\n' +
-                'Product: ' + product + '\n' +
-                'Company: ' + company + '\n' +
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n' +
-                (phone ? 'Phone/WhatsApp: ' + phone + '\n' : '') +
-                (qty ? 'Quantity: ' + qty + ' ' + unit + '\n' : '') +
-                (msg ? '\nMessage:\n' + msg : '');
-
-            var mailto = 'mailto:echo@ahmoontech.com?subject=Product Inquiry: ' + encodeURIComponent(product) +
-                '&body=' + encodeURIComponent(body);
-            window.location.href = mailto;
-
             var status = document.getElementById('inqStatus');
-            status.textContent = '\u2709\ufe0f Opened! If your email app did not open, please email us directly: echo@ahmoontech.com';
-            status.className = 'ok';
+            status.textContent = 'Sending...';
+            status.className = '';
             status.style.display = 'block';
+
+            var formData = new FormData();
+            formData.append('access_key', '463fc425-5ae4-417d-8f97-7a58fb296793');
+            formData.append('subject', 'Product Inquiry: ' + product);
+            formData.append('from_name', name + ' (' + company + ')');
+            formData.append('email', email);
+            formData.append('Product', product);
+            formData.append('Company', company);
+            formData.append('Name', name);
+            formData.append('Email', email);
+            formData.append('Phone/WhatsApp', phone || 'N/A');
+            formData.append('Quantity', (qty || 'N/A') + ' ' + unit);
+            formData.append('Message', msg || 'N/A');
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    status.textContent = '\u2705 Inquiry sent successfully! We will contact you soon.';
+                    status.className = 'ok';
+                    document.getElementById('inquiryForm').reset();
+                    setTimeout(function() { closeInquiryForm(); }, 3000);
+                } else {
+                    status.textContent = '\u274c Failed to send. Please email us directly: echo@ahmoontech.com';
+                    status.className = 'err';
+                }
+            })
+            .catch(function() {
+                status.textContent = '\u274c Network error. Please email us directly: echo@ahmoontech.com';
+                status.className = 'err';
+            });
         }
 
         document.getElementById('productModal').addEventListener('click', function(e) {
