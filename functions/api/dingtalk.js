@@ -15,7 +15,10 @@ export async function onRequestPost(context) {
       'raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
     );
     const signature = await crypto.subtle.sign('HMAC', cryptoKey, msgData);
-    const sign = btoa(String.fromCharCode(...new Uint8Array(signature)));
+    const bytes = new Uint8Array(signature);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    const sign = encodeURIComponent(btoa(binary));
 
     const dingtalkUrl = 'https://oapi.dingtalk.com/robot/send?access_token=' + accessToken +
       '&timestamp=' + timestamp + '&sign=' + encodeURIComponent(sign);
