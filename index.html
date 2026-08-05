@@ -3463,8 +3463,12 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
                 em3232:'MOON EM-3232',em3235:'MOON EM-3235',
             };
             var name = modelNames[productKey] || productKey;
-            var tencentFormUrl = 'https://docs.qq.com/form/page/DTkpzY3BqbkpIZVBV';
-            window.open(tencentFormUrl + '?product=' + encodeURIComponent(name), '_blank');
+            document.getElementById('inqProduct').value = name;
+            document.getElementById('inqProduct').textContent = 'Product: ' + name;
+            document.getElementById('inquiryProduct').textContent = 'Product: ' + name;
+            document.getElementById('inqMsg').value = '';
+            document.getElementById('inqStatus').style.display = 'none';
+            document.getElementById('inquiryOverlay').classList.add('active');
         }
 
         function closeInquiryForm() {
@@ -3487,26 +3491,28 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
             status.className = '';
             status.style.display = 'block';
 
-            var formData = new FormData();
-            formData.append('access_key', '463fc425-5ae4-417d-8f97-7a58fb296793');
-            formData.append('subject', 'Product Inquiry: ' + product);
-            formData.append('from_name', name + ' (' + company + ')');
-            formData.append('email', email);
-            formData.append('Product', product);
-            formData.append('Company', company);
-            formData.append('Name', name);
-            formData.append('Email', email);
-            formData.append('Phone/WhatsApp', phone || 'N/A');
-            formData.append('Quantity', (qty || 'N/A') + ' ' + unit);
-            formData.append('Message', msg || 'N/A');
+            var dingtalkText = '🔔 New Product Inquiry\n\n' +
+                '📦 Product: ' + product + '\n' +
+                '🏢 Company: ' + company + '\n' +
+                '👤 Name: ' + name + '\n' +
+                '📧 Email: ' + email + '\n' +
+                (phone ? '📱 Phone/WhatsApp: ' + phone + '\n' : '') +
+                (qty ? '📊 Quantity: ' + qty + ' ' + unit + '\n' : '') +
+                (msg ? '\n💬 Message:\n' + msg : '');
 
-            fetch('https://api.web3forms.com/submit', {
+            var payload = {
+                msgtype: 'text',
+                text: { content: dingtalkText }
+            };
+
+            fetch('https://oapi.dingtalk.com/robot/send?access_token=f38a7b24fbd66713478a856d566aa7af7c232405c47910bc673163c1820a781b', {
                 method: 'POST',
-                body: formData
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             })
             .then(function(response) { return response.json(); })
             .then(function(data) {
-                if (data.success) {
+                if (data.errcode === 0) {
                     status.textContent = '\u2705 Inquiry sent successfully! We will contact you soon.';
                     status.className = 'ok';
                     document.getElementById('inquiryForm').reset();
