@@ -753,6 +753,143 @@
         .factory-item:hover img {
             transform: scale(1.05);
         }
+
+        /* ----- Company Gallery Section ----- */
+        .company-gallery {
+            background: #f8fafc;
+            padding: 70px 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            aspect-ratio: 16 / 10;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ----- Certifications Section ----- */
+        .certifications {
+            background: #fff;
+            padding: 70px 0;
+        }
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .cert-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .cert-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+        .cert-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            background: #f9fafb;
+            padding: 8px;
+        }
+        .cert-label {
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            border-top: 1px solid #e5e7eb;
+        }
+        .cert-note {
+            max-width: 900px;
+            margin: 30px auto 0;
+            padding: 16px 20px;
+            background: #f0f4f8;
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #475569;
+        }
+        @media (max-width: 768px) {
+            .cert-grid { grid-template-columns: 1fr; }
+            .cert-item img { height: 240px; }
+        }
+
+        /* ----- Certificate Lightbox ----- */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .cert-modal.active {
+            display: flex;
+        }
+        .cert-modal img {
+            max-width: 92%;
+            max-height: 92vh;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+        }
+        .cert-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 36px;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 10000;
+            user-select: none;
+        }
         
         /* ----- Contact Section ----- */
         .contact {
@@ -1331,6 +1468,8 @@
                 <li data-i18n="products"><a href="#products">Products</a></li>
                 <li data-i18n="companyProfile"><a href="#about">Company Profile</a></li>
                 <li data-i18n="factory"><a href="#factory">Factory</a></li>
+                <li data-i18n="gallery"><a href="#company-gallery">Office</a></li>
+                <li data-i18n="cert"><a href="#certifications">Certificates</a></li>
                 <li data-i18n="contact"><a href="#contact">Contact</a></li>
             </ul>
             <div class="lang-switcher">
@@ -2093,6 +2232,57 @@
             </div>
         </div>
     </section>
+
+    <!-- Company Gallery Section -->
+    <section class="company-gallery" id="company-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="galleryTitle">Our Office Environment</h2>
+                <p data-i18n="gallerySubtitle">Professional Team, Modern Workplace</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/company/office-1.jpg" alt="Anhui Moon Technology Office Lobby" data-i18n-alt="galleryAlt1">
+                    <div class="gallery-caption" data-i18n="galleryCap1">Company Entrance with Brand Identity</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/company/office-2.jpg" alt="Modern Office Working Area" data-i18n-alt="galleryAlt2">
+                    <div class="gallery-caption" data-i18n="galleryCap2">Professional Working Environment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="certTitle">Certifications</h2>
+                <p data-i18n="certSubtitle">Certified Safe Transport of Chemical Goods</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-item" onclick="openCertModal('images/certificates/safe-transport-cover.jpg')">
+                    <img src="images/certificates/safe-transport-cover.jpg" alt="Safe Transport Certification Cover" data-i18n-alt="certAlt1">
+                    <div class="cert-label" data-i18n="certLab1">SICIT — Cover Page</div>
+                </div>
+                <div class="cert-item" onclick="openCertModal('images/certificates/safe-transport-page1.jpg')">
+                    <img src="images/certificates/safe-transport-page1.jpg" alt="Safe Transport Certification Page 1" data-i18n-alt="certAlt2">
+                    <div class="cert-label" data-i18n="certLab2">Inspection Details — Page 1</div>
+                </div>
+                <div class="cert-item" onclick="openCertModal('images/certificates/safe-transport-page2.jpg')">
+                    <img src="images/certificates/safe-transport-page2.jpg" alt="Safe Transport Certification Page 2" data-i18n-alt="certAlt3">
+                    <div class="cert-label" data-i18n="certLab3">Hazard Identification — Page 2</div>
+                </div>
+            </div>
+            <p class="cert-note" data-i18n="certNote">📋 Issued by Shanghai Institute of Chemical Industry Testing Co., Ltd. (SICIT, CNAS IB0071). Valid for non-hazardous chemical goods sea transport per IMO IMDG Code 2020.</p>
+        </div>
+    </section>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" onclick="closeCertModal()">
+        <span class="cert-modal-close">&times;</span>
+        <img id="certModalImg" src="" alt="Certificate Full View">
+    </div>
     
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -2146,6 +2336,8 @@
                     <ul>
                         <li><a href="#about" data-i18n="footerLinkAbout">About Us</a></li>
                         <li><a href="#factory" data-i18n="footerLinkFactory">Factory Tour</a></li>
+                        <li><a href="#company-gallery" data-i18n="footerLinkGallery">Office Gallery</a></li>
+                        <li><a href="#certifications" data-i18n="footerLinkCert">Certifications</a></li>
                         <li data-i18n="contact"><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -2226,6 +2418,8 @@
                 products: "Products",
                 companyProfile: "Company Profile",
                 factory: "Factory",
+                gallery: "Office",
+                cert: "Certificates",
                 contact: "Contact",
                 searchPlaceholder: "Search products...",
                 searchNoResults: "\u{1F615} No products found matching your search. Try a different keyword.",
@@ -2364,6 +2558,26 @@
                 factoryAlt3: "Laboratory",
                 factoryAlt4: "Warehouse",
                 aboutImgAlt: "Factory",
+                // Company Gallery
+                galleryTitle: "Our Office Environment",
+                gallerySubtitle: "Professional Team, Modern Workplace",
+                galleryAlt1: "Anhui Moon Technology Office Lobby",
+                galleryAlt2: "Modern Office Working Area",
+                galleryCap1: "Company Entrance with Brand Identity",
+                galleryCap2: "Professional Working Environment",
+                // Certifications
+                certTitle: "Certifications",
+                certSubtitle: "Certified Safe Transport of Chemical Goods",
+                certAlt1: "Safe Transport Certification Cover",
+                certAlt2: "Safe Transport Certification Page 1",
+                certAlt3: "Safe Transport Certification Page 2",
+                certLab1: "SICIT — Cover Page",
+                certLab2: "Inspection Details — Page 1",
+                certLab3: "Hazard Identification — Page 2",
+                certNote: "📋 Issued by Shanghai Institute of Chemical Industry Testing Co., Ltd. (SICIT, CNAS IB0071). Valid for non-hazardous chemical goods sea transport per IMO IMDG Code 2020.",
+                // Footer links
+                footerLinkGallery: "Office Gallery",
+                footerLinkCert: "Certifications",
                 // Contact
                 contactTitle: "Contact Us",
                 contactSubtitle: "Get in Touch for Inquiries and Orders",
@@ -2397,6 +2611,8 @@
                 products: "产品",
                 companyProfile: "公司简介",
                 factory: "工厂",
+                gallery: "办公环境",
+                cert: "资质认证",
                 contact: "联系我们",
                 searchPlaceholder: "搜索产品...",
                 searchNoResults: "😕 未找到匹配的产品，请尝试其他关键词。",
@@ -2554,6 +2770,25 @@
                 footerLinkSiliconeRubber: "硅橡胶",
                 footerLinkAbout: "关于我们",
                 footerLinkFactory: "工厂参观",
+                // Company Gallery
+                galleryTitle: "办公环境",
+                gallerySubtitle: "专业团队 现代化办公空间",
+                galleryAlt1: "安徽幕蒽科技公司门厅",
+                galleryAlt2: "现代化办公区域",
+                galleryCap1: "公司入口品牌展示",
+                galleryCap2: "专业办公环境",
+                // Certifications
+                certTitle: "资质认证",
+                certSubtitle: "化学品安全海运运输条件鉴定",
+                certAlt1: "安全运输鉴定书封面",
+                certAlt2: "安全运输鉴定书第1页",
+                certAlt3: "安全运输鉴定书第2页",
+                certLab1: "SICIT — 封面",
+                certLab2: "检验详情 — 第1页",
+                certLab3: "危险性鉴定 — 第2页",
+                certNote: "📋 由上海化工院检测有限公司（SICIT，CNAS IB0071）出具。符合IMO IMDG Code 2020版非限制性货物海运要求。",
+                footerLinkGallery: "办公环境",
+                footerLinkCert: "资质认证",
                 footerLinkContact: "联系我们",
                 copyright: "\u00a9 2026 安徽Moon科技有限公司 版权所有。",
                 modalTitle: "产品详情"
@@ -2568,6 +2803,8 @@
                 products: "Productos",
                 companyProfile: "Perfil de Empresa",
                 factory: "Fábrica",
+                gallery: "Oficina",
+                cert: "Certificados",
                 contact: "Contacto",
                 searchPlaceholder: "Buscar productos...",
                 searchNoResults: "😕 No se encontraron productos que coincidan con su búsqueda. Intente con una palabra clave diferente.",
@@ -2725,6 +2962,61 @@
                 footerLinkSiliconeRubber: "Caucho de Silicona",
                 footerLinkAbout: "Sobre Nosotros",
                 footerLinkFactory: "Tour de la Fábrica",
+                // Company Gallery
+                galleryTitle: "Nuestro Entorno de Oficina",
+                gallerySubtitle: "Equipo Profesional, Espacio de Trabajo Moderno",
+                galleryAlt1: "Recepción de Anhui Moon Technology",
+                galleryAlt2: "Área de Trabajo de Oficina Moderna",
+                galleryCap1: "Entrada de la Empresa con Identidad de Marca",
+                galleryCap2: "Entorno de Trabajo Profesional",
+                // Certifications
+                certTitle: "Certificaciones",
+                certSubtitle: "Certificación de Transporte Seguro de Productos Químicos",
+                certAlt1: "Portada de Certificación de Transporte Seguro",
+                certAlt2: "Página 1 de Certificación de Transporte Seguro",
+                certAlt3: "Página 2 de Certificación de Transporte Seguro",
+                certLab1: "SICIT — Portada",
+                certLab2: "Detalles de Inspección — Página 1",
+                certLab3: "Identificación de Riesgos — Página 2",
+                certNote: "📋 Emitido por Shanghai Institute of Chemical Industry Testing Co., Ltd. (SICIT, CNAS IB0071). Válido para transporte marítimo de productos químicos no peligrosos según el Código IMDG de la OMI 2020.",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
+                footerLinkGallery: "Galería de Oficina",
+                footerLinkCert: "Certificaciones",
                 footerLinkContact: "Contacto",
                 copyright: "\u00a9 2026 Anhui Moon Technology Co., Ltd. Todos los derechos reservados.",
                 modalTitle: "Detalles del Producto"
@@ -3474,6 +3766,19 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
         function closeInquiryForm() {
             document.getElementById('inquiryOverlay').classList.remove('active');
         }
+
+        function openCertModal(src) {
+            document.getElementById('certModalImg').src = src;
+            document.getElementById('certModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCertModal() {
+            document.getElementById('certModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCertModal();
+        });
 
         function submitInquiry(e) {
             e.preventDefault();
