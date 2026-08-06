@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ahmoontech.pages.dev/sitemap.xml
+Sitemap: https://moontechsilicone.com/sitemap.xml
 
 # Block crawling of non-existent paths
 User-agent: *
