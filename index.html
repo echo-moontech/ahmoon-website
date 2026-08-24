@@ -385,6 +385,75 @@
             border: 1px solid rgba(255,255,255,0.3);
             color: #fff;
         }
+        /* Testimonial card hover effect */
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 102, 204, 0.18) !important;
+            border-top-color: #FF6600 !important;
+        }
+        /* Review Modal */
+        .review-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.25s ease;
+        }
+        .review-modal.active { display: flex; }
+        .review-modal-content {
+            position: relative;
+            max-width: 720px;
+            width: 100%;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: slideUp 0.3s ease;
+        }
+        .review-modal-header {
+            background: linear-gradient(135deg, #0066CC, #004d99);
+            color: #fff;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .review-modal-header h3 {
+            margin: 0;
+            font-size: 17px;
+        }
+        .review-modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .review-modal-close:hover { background: rgba(255,255,255,0.35); }
+        .review-modal-body {
+            padding: 24px;
+            text-align: center;
+            background: #f8f9fb;
+        }
+        .review-modal-body img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .hero-btn {
             display: inline-block;
             padding: 14px 44px;
@@ -1615,8 +1684,8 @@
                 <h2>What Our Customers Say</h2>
                 <p>Trusted by buyers from 30+ countries worldwide</p>
             </div>
-            <div class="testimonials-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; max-width:1200px; margin:0 auto; padding:0 24px;">
-                <div class="testimonial-card" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC;">
+            <div class="testimonials-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; max-width:1200px; margin:0 auto; padding:0 24px;">
+                <div class="testimonial-card" onclick="openReviewModal('review-1-john-carter.png', 'John Carter', 'USA · Silane SI-28')" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC; cursor:pointer; transition:all 0.3s ease; position:relative;">
                     <div style="color:#FF6600; font-size:20px; margin-bottom:12px;">★★★★★</div>
                     <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">"SI-28 quality is excellent, delivery was fast and well-packed. Moon Technology is a reliable partner for our silicone materials needs."</p>
                     <div style="display:flex; align-items:center; gap:12px;">
@@ -1626,8 +1695,12 @@
                             <div style="font-size:12px; color:#888;">USA · Silane SI-28</div>
                         </div>
                     </div>
+                    <div style="margin-top:16px; padding-top:16px; border-top:1px solid #eee; display:flex; align-items:center; justify-content:space-between;">
+                        <span style="font-size:12px; color:#0066CC; font-weight:600;">View Original Review</span>
+                        <span style="color:#0066CC; font-size:18px;">→</span>
+                    </div>
                 </div>
-                <div class="testimonial-card" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC;">
+                <div class="testimonial-card" onclick="openReviewModal('review-2-alex-petrov.png', 'Alex Petrov', 'Russia · KH-560')" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC; cursor:pointer; transition:all 0.3s ease; position:relative;">
                     <div style="color:#FF6600; font-size:20px; margin-bottom:12px;">★★★★★</div>
                     <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">"3-Glycidoxypropyltrimethoxysilane KH-560 arrived perfectly. The technical documentation (TDS/MSDS) was complete and helpful for our formulation."</p>
                     <div style="display:flex; align-items:center; gap:12px;">
@@ -1637,8 +1710,12 @@
                             <div style="font-size:12px; color:#888;">Russia · KH-560</div>
                         </div>
                     </div>
+                    <div style="margin-top:16px; padding-top:16px; border-top:1px solid #eee; display:flex; align-items:center; justify-content:space-between;">
+                        <span style="font-size:12px; color:#0066CC; font-weight:600;">View Original Review</span>
+                        <span style="color:#0066CC; font-size:18px;">→</span>
+                    </div>
                 </div>
-                <div class="testimonial-card" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC;">
+                <div class="testimonial-card" onclick="openReviewModal('review-3-sarah-miller.png', 'Sarah Miller', 'USA · Dimethyl Silicone Oil')" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC; cursor:pointer; transition:all 0.3s ease; position:relative;">
                     <div style="color:#FF6600; font-size:20px; margin-bottom:12px;">★★★★★</div>
                     <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">"201 Dimethyl Silicone Oil from Moon Technology meets our specifications perfectly. Consistent quality across multiple orders."</p>
                     <div style="display:flex; align-items:center; gap:12px;">
@@ -1648,8 +1725,12 @@
                             <div style="font-size:12px; color:#888;">USA · Dimethyl Silicone Oil</div>
                         </div>
                     </div>
+                    <div style="margin-top:16px; padding-top:16px; border-top:1px solid #eee; display:flex; align-items:center; justify-content:space-between;">
+                        <span style="font-size:12px; color:#0066CC; font-weight:600;">View Original Review</span>
+                        <span style="color:#0066CC; font-size:18px;">→</span>
+                    </div>
                 </div>
-                <div class="testimonial-card" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC;">
+                <div class="testimonial-card" onclick="openReviewModal('review-4-lan-nguyen.png', 'Lan Nguyen', 'Vietnam · triethoxyoctylsilane')" style="background:#fff; border-radius:12px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.08); border-top:4px solid #0066CC; cursor:pointer; transition:all 0.3s ease; position:relative;">
                     <div style="color:#FF6600; font-size:20px; margin-bottom:12px;">★★★★★</div>
                     <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">"triethoxyoctylsilane good quality, fast delivery. Very professional communication throughout the order process."</p>
                     <div style="display:flex; align-items:center; gap:12px;">
@@ -1658,6 +1739,10 @@
                             <div style="font-weight:700; font-size:14px; color:#1a1a2e;">Lan Nguyen</div>
                             <div style="font-size:12px; color:#888;">Vietnam · triethoxyoctylsilane</div>
                         </div>
+                    </div>
+                    <div style="margin-top:16px; padding-top:16px; border-top:1px solid #eee; display:flex; align-items:center; justify-content:space-between;">
+                        <span style="font-size:12px; color:#0066CC; font-weight:600;">View Original Review</span>
+                        <span style="color:#0066CC; font-size:18px;">→</span>
                     </div>
                 </div>
             </div>
@@ -3965,7 +4050,40 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
         document.addEventListener('DOMContentLoaded', function() {
             switchLang(window.currentLang);
         });
+
+        // ─── Customer Review Modal ───
+        function openReviewModal(image, name, info) {
+            const modal = document.getElementById('reviewModal');
+            document.getElementById('reviewModalImg').src = 'images/' + image;
+            document.getElementById('reviewModalTitle').textContent = name;
+            document.getElementById('reviewModalSubtitle').textContent = info + ' · Alibaba Verified Review';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeReviewModal();
+        });
     </script>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="review-modal" onclick="if(event.target===this) closeReviewModal()">
+        <div class="review-modal-content">
+            <div class="review-modal-header">
+                <div>
+                    <h3 id="reviewModalTitle">Customer Review</h3>
+                    <div id="reviewModalSubtitle" style="font-size:12px; opacity:0.85; margin-top:2px;"></div>
+                </div>
+                <button class="review-modal-close" onclick="closeReviewModal()" aria-label="Close">×</button>
+            </div>
+            <div class="review-modal-body">
+                <img id="reviewModalImg" src="" alt="Customer Review">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
