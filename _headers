@@ -1,0 +1,32 @@
+# Cloudflare Pages _headers file
+# 控制浏览器缓存（Cloudflare Edge Cache 需要在 Dashboard 配置）
+
+# 静态资源（图片、视频、字体）- 缓存 30 天
+/images/*
+  Cache-Control: public, max-age=2592000, immutable
+/videos/*
+  Cache-Control: public, max-age=2592000, immutable
+
+# 静态资源文件 - 缓存 7 天
+*.css
+  Cache-Control: public, max-age=604800
+*.js
+  Cache-Control: public, max-age=604800
+*.svg
+  Cache-Control: public, max-age=604800
+*.ico
+  Cache-Control: public, max-age=2592000
+
+# HTML 文件 - 缓存 1 小时（保证更新快速生效）
+/
+  Cache-Control: public, max-age=3600, must-revalidate
+*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+/products/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# sitemap 和 robots - 缓存 1 小时
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600
