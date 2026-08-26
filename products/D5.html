@@ -48,6 +48,14 @@
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
         .product-image { background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
         .product-image img { max-width: 100%; height: auto; max-height: 400px; object-fit: contain; }
+        .gallery-container { display: flex; flex-direction: column; gap: 16px; }
+        .gallery-main-img { background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
+        .gallery-main-img img { max-width: 100%; height: auto; max-height: 400px; object-fit: contain; cursor: zoom-in; }
+        .gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .gallery-thumb { background: #fff; border-radius: 8px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer; border: 2px solid transparent; transition: all 0.2s; text-align: center; }
+        .gallery-thumb:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,102,204,0.15); }
+        .gallery-thumb.active { border-color: var(--primary); }
+        .gallery-thumb img { width: 100%; max-height: 80px; object-fit: contain; }
         .product-info h1 { font-size: 32px; margin-bottom: 8px; color: var(--text); }
         .product-subtitle { font-size: 18px; color: var(--text-light); margin-bottom: 16px; }
         .cas-badge { display: inline-block; background: var(--accent); color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 24px; }
@@ -107,8 +115,21 @@
     <section class="product-hero">
         <div class="container">
             <div class="product-grid">
-                <div class="product-image">
-                    <img src="../images/d5.jpg" alt="D5 Cyclopentasiloxane">
+                <div class="gallery-container">
+                    <div class="gallery-main-img">
+                        <img src="../images/d5.jpg" alt="D5 Cyclopentasiloxane" id="galleryMainImg">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <div class="gallery-thumb active" onclick="switchGalleryImg('../images/d5.jpg', this)">
+                            <img src="../images/d5.jpg" alt="D5 - Front view">
+                        </div>
+                        <div class="gallery-thumb" onclick="switchGalleryImg('../images/d5-2.jpg', this)">
+                            <img src="../images/d5-2.jpg" alt="D5 - Package view">
+                        </div>
+                        <div class="gallery-thumb" onclick="switchGalleryImg('../images/d5-3.jpg', this)">
+                            <img src="../images/d5-3.jpg" alt="D5 - Detail view">
+                        </div>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h1 data-i18n="productName">D5 Cyclopentasiloxane</h1>
@@ -301,6 +322,12 @@
             if (window.translations[lang][key] !== undefined) el.placeholder = window.translations[lang][key];
         });
         document.title = window.translations[lang].pageTitle || document.title;
+    }
+
+    function switchGalleryImg(src, thumbEl) {
+        document.getElementById('galleryMainImg').src = src;
+        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+        thumbEl.classList.add('active');
     }
 
     // Init language from localStorage or default to English
