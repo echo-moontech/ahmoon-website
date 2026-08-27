@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimethyl Silicone Oil | Polydimethylsiloxane PDMS | CAS 63148-62-9</title>
+    <title data-i18n="pageTitle">Dimethyl Silicone Oil | Polydimethylsiloxane PDMS | CAS 63148-62-9</title>
     <meta name="description" content="Dimethyl silicone oil (PDMS, CAS 63148-62-9) available in multiple viscosities: 100cst, 350cst, 1000cst, 5000cst, 10000cst. High purity ≥99%. REACH compliant. Factory direct pricing.">
     <meta name="keywords" content="dimethyl silicone oil, PDMS, polydimethylsiloxane, CAS 63148-62-9, silicone oil 350cst, silicone oil 1000cst, China manufacturer, silicone fluid">
     <link rel="canonical" href="https://moontechsilicone.com/products/dimethyl-silicone-oil.html">
@@ -63,6 +63,13 @@
             background: var(--bg);
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Top Bar: Language Switcher */
+        .top-bar { background: #14141f; padding: 0; height: 48px; display: flex; align-items: center; justify-content: flex-end; }
+        .lang-switcher { display: flex; gap: 4px; margin-right: 24px; }
+        .lang-btn { background: transparent; border: 1px solid #333; color: #aaa; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+        .lang-btn:hover { border-color: var(--primary); color: #fff; }
+        .lang-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
         
         .breadcrumb {
             background: #fff;
@@ -218,8 +225,59 @@
             color: var(--text-light);
         }
         
-        .applications {
+        .gallery-showcase {
             background: #fff;
+            padding: 60px 0;
+        }
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .showcase-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+        .showcase-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: transform 0.3s;
+        }
+        .showcase-item img:hover { transform: scale(1.03); }
+        .showcase-body {
+            padding: 16px 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .visc-badge {
+            align-self: flex-start;
+            background: var(--accent);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 14px;
+        }
+        .showcase-item h3 {
+            font-size: 17px;
+            color: var(--primary);
+        }
+        .showcase-item p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .applications {
+            background: var(--bg);
             padding: 60px 0;
         }
         .app-grid {
@@ -229,9 +287,10 @@
             margin-top: 40px;
         }
         .app-card {
-            background: var(--bg);
+            background: #fff;
             padding: 32px;
             border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
         .app-card h3 {
             font-size: 18px;
@@ -276,21 +335,49 @@
         }
         footer a { color: #fff; text-decoration: none; }
         
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: zoom-out;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 92%;
+            max-height: 92%;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        
         @media (max-width: 768px) {
             .product-grid { grid-template-columns: 1fr; }
             .viscosity-grid { grid-template-columns: repeat(2, 1fr); }
             .app-grid { grid-template-columns: 1fr; }
+            .showcase-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+    <!-- Top Bar: Language Switcher -->
+    <div class="top-bar">
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+            <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
+            <button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button>
+        </div>
+    </div>
+
     <nav class="breadcrumb">
         <div class="container">
-            <a href="/">Home</a>
+            <a href="/" data-i18n="navHome">Home</a>
             <span>/</span>
-            <a href="/#products">Products</a>
+            <a href="/#products" data-i18n="navProducts">Products</a>
             <span>/</span>
-            <a href="/#silicone-oil">Silicone Oil</a>
+            <a href="/#silicone-oil" data-i18n="navSiliconeOil">Silicone Oil</a>
             <span>/</span>
             <span>Dimethyl Silicone Oil</span>
         </div>
@@ -303,10 +390,10 @@
                     <img src="../images/dimethyl-silicone-oil.jpg" alt="Dimethyl Silicone Oil">
                 </div>
                 <div class="product-info">
-                    <h1>Dimethyl Silicone Oil</h1>
-                    <p class="product-subtitle">Polydimethylsiloxane (PDMS)</p>
+                    <h1 data-i18n="productName">Dimethyl Silicone Oil</h1>
+                    <p class="product-subtitle" data-i18n="productSubtitle">Polydimethylsiloxane (PDMS)</p>
                     <span class="cas-badge">CAS: 63148-62-9</span>
-                    <p class="product-description">
+                    <p class="product-description" data-i18n="productDesc">
                         Dimethyl silicone oil (PDMS) is a versatile, inert silicone fluid with excellent thermal stability, 
                         low surface tension, and water repellency. Available in multiple viscosities from 100cst to 10000cst, 
                         it serves diverse applications across industrial, cosmetic, and medical industries. 
@@ -320,8 +407,8 @@
                         <span class="viscosity-tag">10000cst</span>
                     </div>
                     <div class="cta-buttons">
-                        <a href="mailto:echo@ahmoontech.com?subject=Quote%20Request%20for%20Dimethyl%20Silicone%20Oil" class="btn-primary">Request Quote</a>
-                        <a href="/index.html#contact" class="btn-secondary">Contact Us</a>
+                        <a href="mailto:echo@ahmoontech.com?subject=Quote%20Request%20for%20Dimethyl%20Silicone%20Oil" class="btn-primary" data-i18n="btnQuote">Request Quote</a>
+                        <a href="/index.html#contact" class="btn-secondary" data-i18n="btnContact">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -331,51 +418,51 @@
     <section class="specs-section">
         <div class="container">
             <div class="section-title">
-                <h2>Technical Specifications</h2>
+                <h2 data-i18n="specsTitle">Technical Specifications</h2>
             </div>
             <table class="specs-table">
                 <tr>
-                    <th>Chemical Name</th>
+                    <th data-i18n="specChemName">Chemical Name</th>
                     <td>Polydimethylsiloxane (PDMS)</td>
                 </tr>
                 <tr>
-                    <th>CAS Number</th>
+                    <th data-i18n="specCAS">CAS Number</th>
                     <td>63148-62-9</td>
                 </tr>
                 <tr>
-                    <th>Molecular Formula</th>
+                    <th data-i18n="specFormula">Molecular Formula</th>
                     <td>(C₂H₆OSi)ₙ</td>
                 </tr>
                 <tr>
-                    <th>Appearance</th>
+                    <th data-i18n="specAppearance">Appearance</th>
                     <td>Colorless transparent viscous liquid</td>
                 </tr>
                 <tr>
-                    <th>Purity</th>
+                    <th data-i18n="specPurity">Purity</th>
                     <td>≥99%</td>
                 </tr>
                 <tr>
-                    <th>Density (25°C)</th>
+                    <th data-i18n="specDensity">Density (25°C)</th>
                     <td>0.930-0.975 g/cm³ (varies by viscosity)</td>
                 </tr>
                 <tr>
-                    <th>Refractive Index (25°C)</th>
+                    <th data-i18n="specRI">Refractive Index (25°C)</th>
                     <td>1.400-1.405</td>
                 </tr>
                 <tr>
-                    <th>Flash Point</th>
+                    <th data-i18n="specFlash">Flash Point</th>
                     <td>>200°C</td>
                 </tr>
                 <tr>
-                    <th>Thermal Stability</th>
+                    <th data-i18n="specTemp">Thermal Stability</th>
                     <td>-50°C to 200°C (continuous use)</td>
                 </tr>
                 <tr>
-                    <th>Certifications</th>
+                    <th data-i18n="specCert">Certifications</th>
                     <td>REACH, FDA (for cosmetic/food grade)</td>
                 </tr>
                 <tr>
-                    <th>Packing</th>
+                    <th data-i18n="specPacking">Packing</th>
                     <td>200kg drums, 1000kg IBC tanks, or as requested</td>
                 </tr>
             </table>
@@ -385,28 +472,87 @@
     <section class="viscosity-section">
         <div class="container">
             <div class="section-title">
-                <h2>Available Viscosities</h2>
+                <h2 data-i18n="viscTitle">Available Viscosities</h2>
             </div>
             <div class="viscosity-grid">
                 <div class="viscosity-card">
                     <h3>100cst</h3>
-                    <p>Low viscosity<br>Spray applications<br>Thin film coatings</p>
+                    <p data-i18n="v100desc">Low viscosity<br>Spray applications<br>Thin film coatings</p>
                 </div>
                 <div class="viscosity-card">
                     <h3>350cst</h3>
-                    <p>Standard viscosity<br>General purpose<br>Most popular</p>
+                    <p data-i18n="v350desc">Standard viscosity<br>General purpose<br>Most popular</p>
                 </div>
                 <div class="viscosity-card">
                     <h3>1000cst</h3>
-                    <p>Medium viscosity<br>Industrial lubricants<br>Heat transfer</p>
+                    <p data-i18n="v1000desc">Medium viscosity<br>Industrial lubricants<br>Heat transfer</p>
                 </div>
                 <div class="viscosity-card">
                     <h3>5000cst</h3>
-                    <p>High viscosity<br>Damping fluids<br>Shock absorbers</p>
+                    <p data-i18n="v5000desc">High viscosity<br>Damping fluids<br>Shock absorbers</p>
                 </div>
                 <div class="viscosity-card">
                     <h3>10000cst</h3>
-                    <p>Very high viscosity<br>Heavy lubrication<br>Specialty applications</p>
+                    <p data-i18n="v10000desc">Very high viscosity<br>Heavy lubrication<br>Specialty applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Application Gallery -->
+    <section class="gallery-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="galleryTitle">Application Gallery</h2>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <img src="../images/201-app-heat-transfer.png" alt="Heat transfer fluids" onclick="openLightbox(this.src)">
+                    <div class="showcase-body">
+                        <span class="visc-badge">201-1000cst</span>
+                        <h3 data-i18n="gTitle1">Heat Transfer Fluids</h3>
+                        <p data-i18n="gDesc1">Used as heat transfer fluid in heat exchangers, circulating systems and temperature control equipment for stable thermal performance.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="../images/201-app-damping.png" alt="Damping and hydraulic fluids" onclick="openLightbox(this.src)">
+                    <div class="showcase-body">
+                        <span class="visc-badge">201-350cst</span>
+                        <h3 data-i18n="gTitle2">Damping &amp; Hydraulic Fluids</h3>
+                        <p data-i18n="gDesc2">Provides damping and cushioning in shock absorbers, hydraulic systems and precision instruments.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="../images/201-app-personal-care.png" alt="Personal care fluids" onclick="openLightbox(this.src)">
+                    <div class="showcase-body">
+                        <span class="visc-badge">201-1000cst</span>
+                        <h3 data-i18n="gTitle3">Personal Care Fluids</h3>
+                        <p data-i18n="gDesc3">Base for skin creams, hair conditioners and makeup, delivering a silky feel and water resistance.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="../images/201-app-dielectric.png" alt="Dielectric fluids" onclick="openLightbox(this.src)">
+                    <div class="showcase-body">
+                        <span class="visc-badge">201-350cst</span>
+                        <h3 data-i18n="gTitle4">Dielectric Fluids</h3>
+                        <p data-i18n="gDesc4">Insulating and cooling medium for transformers, capacitors and high-voltage cable systems.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="../images/201-app-led-optics.png" alt="RI matching for LED and optics" onclick="openLightbox(this.src)">
+                    <div class="showcase-body">
+                        <span class="visc-badge">201-1000cst</span>
+                        <h3 data-i18n="gTitle5">RI Matching for LED &amp; Optics</h3>
+                        <p data-i18n="gDesc5">Matched refractive index for LED lens casting, optical coupling and prism bonding.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="../images/201-app-lubricant.png" alt="Lubricants for plastic and rubber parts" onclick="openLightbox(this.src)">
+                    <div class="showcase-body">
+                        <span class="visc-badge">201-350cst</span>
+                        <h3 data-i18n="gTitle6">Lubricants for Plastic &amp; Rubber Parts</h3>
+                        <p data-i18n="gDesc6">Lubricates plastic and rubber components, bearings, gears and seals without swelling or corrosion.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -415,32 +561,32 @@
     <section class="applications">
         <div class="container">
             <div class="section-title">
-                <h2>Applications</h2>
+                <h2 data-i18n="appsTitle">Applications</h2>
             </div>
             <div class="app-grid">
                 <div class="app-card">
-                    <h3>🏭 Industrial Lubricants</h3>
-                    <p>High-temperature lubrication for bearings, gears, and machinery operating in extreme conditions.</p>
+                    <h3 data-i18n="app1Title">🏭 Industrial Lubricants</h3>
+                    <p data-i18n="app1Desc">High-temperature lubrication for bearings, gears, and machinery operating in extreme conditions.</p>
                 </div>
                 <div class="app-card">
-                    <h3>💄 Cosmetics & Personal Care</h3>
-                    <p>Skin moisturizers, hair conditioners, and makeup bases. Provides silky feel and water resistance.</p>
+                    <h3 data-i18n="app2Title">💄 Cosmetics &amp; Personal Care</h3>
+                    <p data-i18n="app2Desc">Skin moisturizers, hair conditioners, and makeup bases. Provides silky feel and water resistance.</p>
                 </div>
                 <div class="app-card">
-                    <h3>🏥 Medical & Pharmaceutical</h3>
-                    <p>Medical device lubrication, pharmaceutical processing, and implantable device coatings.</p>
+                    <h3 data-i18n="app3Title">🏥 Medical &amp; Pharmaceutical</h3>
+                    <p data-i18n="app3Desc">Medical device lubrication, pharmaceutical processing, and implantable device coatings.</p>
                 </div>
                 <div class="app-card">
-                    <h3>🍳 Food Processing</h3>
-                    <p>Food-grade anti-foam agents, release agents for baking and confectionery.</p>
+                    <h3 data-i18n="app4Title">🍳 Food Processing</h3>
+                    <p data-i18n="app4Desc">Food-grade anti-foam agents, release agents for baking and confectionery.</p>
                 </div>
                 <div class="app-card">
-                    <h3>⚡ Electrical Insulation</h3>
-                    <p>Transformer oil, capacitor impregnation, and high-voltage cable insulation.</p>
+                    <h3 data-i18n="app5Title">⚡ Electrical Insulation</h3>
+                    <p data-i18n="app5Desc">Transformer oil, capacitor impregnation, and high-voltage cable insulation.</p>
                 </div>
                 <div class="app-card">
-                    <h3>🛡️ Water Repellent</h3>
-                    <p>Textile waterproofing, building material protection, and automotive care products.</p>
+                    <h3 data-i18n="app6Title">🛡️ Water Repellent</h3>
+                    <p data-i18n="app6Desc">Textile waterproofing, building material protection, and automotive care products.</p>
                 </div>
             </div>
         </div>
@@ -449,16 +595,16 @@
     <section class="downloads">
         <div class="container">
             <div class="section-title">
-                <h2>Documentation</h2>
+                <h2 data-i18n="downloadsTitle">Documentation</h2>
             </div>
             <div class="download-grid">
                 <a href="/tds/Dimethyl-Silicone-Oil-TDS.pdf" class="download-card">
-                    <h4>📄 Technical Data Sheet</h4>
-                    <p>Complete product specifications</p>
+                    <h4 data-i18n="docTDS">📄 Technical Data Sheet</h4>
+                    <p data-i18n="docTDSdesc">Complete product specifications</p>
                 </a>
                 <a href="/msds/Dimethyl-Silicone-Oil-MSDS.pdf" class="download-card">
-                    <h4>⚠️ Safety Data Sheet</h4>
-                    <p>Handling & safety information</p>
+                    <h4 data-i18n="docMSDS">⚠️ Safety Data Sheet</h4>
+                    <p data-i18n="docMSDSdesc">Handling &amp; safety information</p>
                 </a>
             </div>
         </div>
@@ -471,5 +617,157 @@
                <a href="tel:+8618154230550">+86-181-5423-0550</a></p>
         </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+    window.translations = {
+        en: {
+            pageTitle: "Dimethyl Silicone Oil | Polydimethylsiloxane PDMS | CAS 63148-62-9",
+            navHome: "Home", navProducts: "Products", navSiliconeOil: "Silicone Oil",
+            productName: "Dimethyl Silicone Oil",
+            productSubtitle: "Polydimethylsiloxane (PDMS)",
+            productDesc: "Dimethyl silicone oil (PDMS) is a versatile, inert silicone fluid with excellent thermal stability, low surface tension, and water repellency. Available in multiple viscosities from 100cst to 10000cst, it serves diverse applications across industrial, cosmetic, and medical industries. Our PDMS meets FDA and REACH standards for safe use in sensitive applications.",
+            btnQuote: "Request Quote", btnContact: "Contact Us",
+            specsTitle: "Technical Specifications",
+            specChemName: "Chemical Name", specCAS: "CAS Number", specFormula: "Molecular Formula",
+            specAppearance: "Appearance", specPurity: "Purity", specDensity: "Density (25°C)",
+            specRI: "Refractive Index (25°C)", specFlash: "Flash Point", specTemp: "Thermal Stability",
+            specCert: "Certifications", specPacking: "Packing",
+            viscTitle: "Available Viscosities",
+            v100desc: "Low viscosity / Spray applications / Thin film coatings",
+            v350desc: "Standard viscosity / General purpose / Most popular",
+            v1000desc: "Medium viscosity / Industrial lubricants / Heat transfer",
+            v5000desc: "High viscosity / Damping fluids / Shock absorbers",
+            v10000desc: "Very high viscosity / Heavy lubrication / Specialty applications",
+            galleryTitle: "Application Gallery",
+            gTitle1: "Heat Transfer Fluids", gDesc1: "Used as heat transfer fluid in heat exchangers, circulating systems and temperature control equipment for stable thermal performance.",
+            gTitle2: "Damping & Hydraulic Fluids", gDesc2: "Provides damping and cushioning in shock absorbers, hydraulic systems and precision instruments.",
+            gTitle3: "Personal Care Fluids", gDesc3: "Base for skin creams, hair conditioners and makeup, delivering a silky feel and water resistance.",
+            gTitle4: "Dielectric Fluids", gDesc4: "Insulating and cooling medium for transformers, capacitors and high-voltage cable systems.",
+            gTitle5: "RI Matching for LED & Optics", gDesc5: "Matched refractive index for LED lens casting, optical coupling and prism bonding.",
+            gTitle6: "Lubricants for Plastic & Rubber Parts", gDesc6: "Lubricates plastic and rubber components, bearings, gears and seals without swelling or corrosion.",
+            appsTitle: "Applications",
+            app1Title: "🏭 Industrial Lubricants", app1Desc: "High-temperature lubrication for bearings, gears, and machinery operating in extreme conditions.",
+            app2Title: "💄 Cosmetics & Personal Care", app2Desc: "Skin moisturizers, hair conditioners, and makeup bases. Provides silky feel and water resistance.",
+            app3Title: "🏥 Medical & Pharmaceutical", app3Desc: "Medical device lubrication, pharmaceutical processing, and implantable device coatings.",
+            app4Title: "🍳 Food Processing", app4Desc: "Food-grade anti-foam agents, release agents for baking and confectionery.",
+            app5Title: "⚡ Electrical Insulation", app5Desc: "Transformer oil, capacitor impregnation, and high-voltage cable insulation.",
+            app6Title: "🛡️ Water Repellent", app6Desc: "Textile waterproofing, building material protection, and automotive care products.",
+            downloadsTitle: "Documentation",
+            docTDS: "📄 Technical Data Sheet", docTDSdesc: "Complete product specifications",
+            docMSDS: "⚠️ Safety Data Sheet", docMSDSdesc: "Handling & safety information"
+        },
+        zh: {
+            pageTitle: "二甲基硅油 | 聚二甲基硅氧烷 PDMS | CAS 63148-62-9",
+            navHome: "首页", navProducts: "产品中心", navSiliconeOil: "硅油",
+            productName: "二甲基硅油",
+            productSubtitle: "聚二甲基硅氧烷 (PDMS)",
+            productDesc: "二甲基硅油（PDMS）是一种用途广泛、化学惰性的硅油，具有优异的热稳定性、低表面张力和疏水性。黏度覆盖 100cst 至 10000cst，广泛应用于工业、化妆品及医疗领域。我司 PDMS 符合 FDA 与 REACH 标准，可安全用于敏感场景。",
+            btnQuote: "立即询价", btnContact: "联系我们",
+            specsTitle: "技术参数",
+            specChemName: "化学名称", specCAS: "CAS 号", specFormula: "分子式",
+            specAppearance: "外观", specPurity: "纯度", specDensity: "密度 (25°C)",
+            specRI: "折射率 (25°C)", specFlash: "闪点", specTemp: "热稳定性",
+            specCert: "认证", specPacking: "包装",
+            viscTitle: "可选黏度",
+            v100desc: "低黏度 / 喷涂应用 / 薄膜涂层",
+            v350desc: "标准黏度 / 通用型 / 最畅销",
+            v1000desc: "中黏度 / 工业润滑 / 热传导",
+            v5000desc: "高黏度 / 阻尼液 / 减震器",
+            v10000desc: "超高黏度 / 重负荷润滑 / 特殊应用",
+            galleryTitle: "应用实景图库",
+            gTitle1: "热传导液", gDesc1: "用作换热器、循环系统与温控设备中的热传导液，热性能稳定。",
+            gTitle2: "阻尼与液压液", gDesc2: "用于减震器、液压系统与精密仪器的阻尼与缓冲。",
+            gTitle3: "个人护理原料", gDesc3: "用于护肤霜、护发素与彩妆的基础原料，带来丝滑触感与防水性。",
+            gTitle4: "绝缘冷却液", gDesc4: "用于变压器、电容器与高压电缆系统的绝缘与冷却介质。",
+            gTitle5: "LED 与光学折射率匹配", gDesc5: "用于 LED 透镜浇注、光学耦合与棱镜粘接的折射率匹配。",
+            gTitle6: "塑料与橡胶件润滑剂", gDesc6: "用于塑料/橡胶件、轴承、齿轮与密封件的润滑，无溶胀、无腐蚀。",
+            appsTitle: "应用领域",
+            app1Title: "🏭 工业润滑", app1Desc: "用于高温环境下轴承、齿轮及机械设备的润滑。",
+            app2Title: "💄 化妆品与个人护理", app2Desc: "护肤保湿、护发素与彩妆基底，带来丝滑触感与防水性。",
+            app3Title: "🏥 医疗与制药", app3Desc: "医疗器械润滑、制药工艺与植入器械涂层。",
+            app4Title: "🍳 食品加工", app4Desc: "食品级消泡剂、烘焙与糖果脱模剂。",
+            app5Title: "⚡ 电气绝缘", app5Desc: "变压器油、电容器浸渍与高压电缆绝缘。",
+            app6Title: "🛡️ 防水处理", app6Desc: "纺织品防水、建材防护与汽车护理产品。",
+            downloadsTitle: "技术文档",
+            docTDS: "📄 技术数据表", docTDSdesc: "完整产品规格",
+            docMSDS: "⚠️ 安全数据表", docMSDSdesc: "操作与安全信息"
+        },
+        es: {
+            pageTitle: "Aceite de Silicona Dimetílico | Polidimetilsiloxano PDMS | CAS 63148-62-9",
+            navHome: "Inicio", navProducts: "Productos", navSiliconeOil: "Aceite de Silicona",
+            productName: "Aceite de Silicona Dimetílico",
+            productSubtitle: "Polidimetilsiloxano (PDMS)",
+            productDesc: "El aceite de silicona dimetílico (PDMS) es un fluido de silicona versátil e inerte, con excelente estabilidad térmica, baja tensión superficial e hidrofobicidad. Disponible en viscosidades de 100cst a 10000cst, sirve para aplicaciones industriales, cosméticas y médicas. Nuestro PDMS cumple con FDA y REACH para uso seguro en aplicaciones sensibles.",
+            btnQuote: "Solicitar Cotización", btnContact: "Contáctenos",
+            specsTitle: "Especificaciones Técnicas",
+            specChemName: "Nombre Químico", specCAS: "Número CAS", specFormula: "Fórmula Molecular",
+            specAppearance: "Apariencia", specPurity: "Pureza", specDensity: "Densidad (25°C)",
+            specRI: "Índice de Refracción (25°C)", specFlash: "Punto de Inflamación", specTemp: "Estabilidad Térmica",
+            specCert: "Certificaciones", specPacking: "Embalaje",
+            viscTitle: "Viscosidades Disponibles",
+            v100desc: "Baja viscosidad / Aplicaciones de pulverización / Recubrimientos de película fina",
+            v350desc: "Viscosidad estándar / Uso general / Más popular",
+            v1000desc: "Viscosidad media / Lubricantes industriales / Transferencia de calor",
+            v5000desc: "Alta viscosidad / Fluidos amortiguadores / Amortiguadores",
+            v10000desc: "Viscosidad muy alta / Lubricación pesada / Aplicaciones especiales",
+            galleryTitle: "Galería de Aplicaciones",
+            gTitle1: "Fluidos de Transferencia de Calor", gDesc1: "Se usa como fluido de transferencia de calor en intercambiadores, sistemas de circulación y equipos de control térmico, con rendimiento térmico estable.",
+            gTitle2: "Fluidos de Amortiguación e Hidráulicos", gDesc2: "Proporciona amortiguación y acolchado en amortiguadores, sistemas hidráulicos e instrumentos de precisión.",
+            gTitle3: "Fluidos de Cuidado Personal", gDesc3: "Base para cremas, acondicionadores y maquillaje, aportando sensación sedosa y resistencia al agua.",
+            gTitle4: "Fluidos Dieléctricos", gDesc4: "Medio aislante y refrigerante para transformadores, condensadores y sistemas de cables de alta tensión.",
+            gTitle5: "Coincidencia de IR para LED y Óptica", gDesc5: "Índice de refracción coincidente para colado de lentes LED, acoplamiento óptico y unión de prismas.",
+            gTitle6: "Lubricantes para Piezas de Plástico y Caucho", gDesc6: "Lubrica componentes de plástico y caucho, cojinetes, engranajes y sellos sin hinchazón ni corrosión.",
+            appsTitle: "Aplicaciones",
+            app1Title: "🏭 Lubricantes Industriales", app1Desc: "Lubricación a alta temperatura para cojinetes, engranajes y maquinaria en condiciones extremas.",
+            app2Title: "💄 Cosmética y Cuidado Personal", app2Desc: "Hidratantes, acondicionadores y bases de maquillaje. Aporta sensación sedosa y resistencia al agua.",
+            app3Title: "🏥 Médico y Farmacéutico", app3Desc: "Lubricación de dispositivos médicos, procesamiento farmacéutico y recubrimientos de dispositivos implantables.",
+            app4Title: "🍳 Procesamiento de Alimentos", app4Desc: "Anti-espumantes de grado alimenticio, agentes de liberación para horneado y confitería.",
+            app5Title: "⚡ Aislamiento Eléctrico", app5Desc: "Aceite de transformador, impregnación de condensadores y aislamiento de cables de alta tensión.",
+            app6Title: "🛡️ Repelente de Agua", app6Desc: "Impermeabilización textil, protección de materiales de construcción y productos de cuidado automotriz.",
+            downloadsTitle: "Documentación",
+            docTDS: "📄 Ficha Técnica", docTDSdesc: "Especificaciones completas del producto",
+            docMSDS: "⚠️ Ficha de Datos de Seguridad", docMSDSdesc: "Información de manejo y seguridad"
+        }
+    };
+
+    function switchLang(lang) {
+        window.currentLang = lang;
+        localStorage.setItem('moonLang', lang);
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (window.translations[lang][key] !== undefined) {
+                const anchor = el.querySelector('a');
+                if (anchor) { anchor.textContent = window.translations[lang][key]; }
+                else { el.textContent = window.translations[lang][key]; }
+            }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (window.translations[lang][key] !== undefined) el.placeholder = window.translations[lang][key];
+        });
+        document.title = window.translations[lang].pageTitle || document.title;
+    }
+
+    function openLightbox(src) {
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const saved = localStorage.getItem('moonLang') || 'en';
+        switchLang(saved);
+    });
+    </script>
 </body>
 </html>
