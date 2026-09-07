@@ -1,10 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
 
 Sitemap: https://moontechsilicone.com/sitemap.xml
-
-# Block crawling of non-existent paths
-User-agent: *
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
