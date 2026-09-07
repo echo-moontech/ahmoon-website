@@ -246,7 +246,74 @@
             .product-grid { grid-template-columns: 1fr; }
             .app-grid { grid-template-columns: 1fr; }
         }
+        
+        /* FAQ Section */
+        .faq-section { background: var(--bg); padding: 80px 0; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .faq-question { color: var(--primary); font-size: 17px; font-weight: 600; margin-bottom: 12px; cursor: pointer; }
+        .faq-question::before { content: "Q: "; color: var(--primary); font-weight: 700; }
+        .faq-answer { color: var(--text); font-size: 15px; line-height: 1.7; }
+        .faq-answer::before { content: "A: "; color: #22c55e; font-weight: 700; }
     </style>
+    
+    <!-- FAQPage Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is KH-550 silane coupling agent used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KH-550 (3-Aminopropyltriethoxysilane, CAS 919-30-2) is an amino-functional silane coupling agent. Primary uses include glass fiber treatment, mineral filler coupling in plastics and rubber, adhesion promoter in epoxy and polyurethane coatings, silicone sealants, and surface modification of inorganic materials. It reacts with both organic polymers and inorganic surfaces to form a durable chemical bridge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the CAS number of KH-550?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KH-550 CAS number is 919-30-2, chemical name 3-Aminopropyltriethoxysilane. Molecular weight 221.37 g/mol, molecular formula C9H23NO3Si. Appearance: colorless to pale yellow transparent liquid. Purity ≥ 99%. Density 0.946 g/cm3 at 25°C, refractive index 1.420 at 25°C."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between KH-550 and KH-560?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KH-550 is amino-functional (NH2 group), ideal for epoxy, polyurethane, and phenolic resin systems; widely used in glass fiber sizing. KH-560 is epoxy-functional (epoxy ring, CAS 2530-83-8), ideal for polyester, acrylic, and epoxy resin coatings where higher reactivity is needed. Use KH-550 when amino compatibility is required; use KH-560 for epoxy-based systems needing improved wet adhesion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the MOQ and price of KH-550?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MOQ is 1 kg for samples, 25 kg/drum (200 kg/drum) for bulk orders. Free sample available (shipping by buyer). Factory-direct price from $5/kg, with volume discounts above 100 kg. 24-hour quote response. TDS and MSDS provided on request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is KH-550 FDA approved for food contact applications?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. KH-550 is FDA compliant under 21 CFR 175.300 (resinous and polymeric coatings) and 21 CFR 175.390 (crosslinked polyester coatings). REACH registered. ISO 9001 certified manufacturer (Anhui Moon Technology). Suitable for indirect food contact coatings, adhesives, and sealants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you use KH-550 in coatings formulation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical dosage: 0.5-2% of total formulation weight. Pre-dilute KH-550 with ethanol or water (adjust pH to 4-5 with acetic acid) for hydrolysis (15-30 min). Add the hydrolyzed solution slowly into the resin under stirring. For optimal adhesion on glass or metal substrates, allow 24h cure at room temperature before testing. Contact our engineers for application-specific guidance."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Breadcrumb -->
@@ -393,6 +460,41 @@
                     <h4>⚠️ Safety Data Sheet</h4>
                     <p>Handling & safety information</p>
                 </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What is KH-550 silane coupling agent used for?</div>
+                    <div class="faq-answer">KH-550 (3-Aminopropyltriethoxysilane, CAS 919-30-2) is an amino-functional silane coupling agent. Primary uses include glass fiber treatment, mineral filler coupling in plastics and rubber, adhesion promoter in epoxy and polyurethane coatings, silicone sealants, and surface modification of inorganic materials.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the CAS number of KH-550?</div>
+                    <div class="faq-answer">KH-550 CAS number is 919-30-2 (3-Aminopropyltriethoxysilane). Molecular weight 221.37 g/mol. Appearance: colorless to pale yellow transparent liquid. Purity ≥ 99%, refractive index 1.420 at 25°C.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What's the difference between KH-550 and KH-560?</div>
+                    <div class="faq-answer">KH-550 is amino-functional (NH2), ideal for epoxy, polyurethane and phenolic systems. KH-560 is epoxy-functional (CAS 2530-83-8), ideal for polyester, acrylic and epoxy coatings. Use KH-550 for amino compatibility; KH-560 for higher wet adhesion.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What's the MOQ and price of KH-550?</div>
+                    <div class="faq-answer">MOQ: 1 kg (sample) / 25 kg or 200 kg/drum (bulk). Free sample available. Factory-direct price from $5/kg with volume discounts above 100 kg. 24-hour quote response. TDS and MSDS on request.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is KH-550 FDA approved for food contact applications?</div>
+                    <div class="faq-answer">Yes. KH-550 is FDA compliant under 21 CFR 175.300 and 21 CFR 175.390. REACH registered. ISO 9001 certified manufacturer. Suitable for indirect food contact coatings, adhesives and sealants.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do you use KH-550 in coatings formulation?</div>
+                    <div class="faq-answer">Typical dosage 0.5-2% of total formulation. Pre-dilute with ethanol or water (pH 4-5 with acetic acid), hydrolyze 15-30 min, add to resin under stirring. For glass/metal substrates, allow 24h cure at room temperature. Contact us for application-specific guidance.</div>
+                </div>
             </div>
         </div>
     </section>

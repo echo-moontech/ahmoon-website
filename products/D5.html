@@ -85,7 +85,73 @@
         footer a { color: #fff; text-decoration: none; }
 
         @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; } .app-grid { grid-template-columns: 1fr; } }
+        /* FAQ Section */
+        .faq-section { background: var(--bg); padding: 80px 0; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .faq-question { color: var(--primary); font-size: 17px; font-weight: 600; margin-bottom: 12px; cursor: pointer; }
+        .faq-question::before { content: "Q: "; color: var(--primary); font-weight: 700; }
+        .faq-answer { color: var(--text); font-size: 15px; line-height: 1.7; }
+        .faq-answer::before { content: "A: "; color: #22c55e; font-weight: 700; }
     </style>
+    
+    <!-- FAQPage Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is D5 cyclopentasiloxane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "D5 (Decamethylcyclopentasiloxane, CAS 541-02-6) is a cyclic silicone with 5 silicon-oxygen units. It is a colorless, odorless, volatile liquid that evaporates quickly without leaving residue, widely used as a carrier and emollient in cosmetics and personal care."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is D5 used for in cosmetics and personal care?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "D5 is used in hair care (conditioners, dry shampoos), skin care (serums, sunscreens, makeup) and deodorants. It provides a silky, non-greasy skin feel, improves spreadability of actives, reduces drying time and acts as a volatile carrier. Industrial uses include precision cleaning and defoaming."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is D5 safe and regulatory compliant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "D5 from Moon Technology is cosmetic-grade (≥99% purity), FDA-listed for cosmetic use and REACH registered. Note: EU REACH restricts D5 above 0.1% in wash-off cosmetic products; it remains approved for leave-on products and industrial applications. Compliance documentation available on request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between D4, D5 and D6?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "D4, D5 and D6 are cyclic siloxanes with 4, 5 and 6 silicon-oxygen units. D5 is preferred in cosmetics for its balanced volatility and skin feel. D6 evaporates more slowly; D4 is the most volatile and faces stricter EU restrictions. Moon Technology supplies both D5 (CAS 541-02-6) and D6."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you formulate D5 in hair or skin care?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical use level is 5-20% of the formulation. D5 is compatible with dimethicone, natural oils, esters and most cosmetic ingredients. Add at room temperature with gentle stirring. For anhydrous systems it can be the main carrier phase."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the price and MOQ of D5?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Factory-direct price from $8/kg with volume discounts. MOQ: free sample 1 kg; bulk order from 25 kg drums up to 200 kg. 24-hour quote response and worldwide shipping with full documentation."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -204,6 +270,41 @@
                 <div class="app-card">
                     <h3 data-i18n="app6Title">⚡ Electronics</h3>
                     <p data-i18n="app6Desc">Heat-resistant dielectric fluid and solvent for electronic component manufacturing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What is D5 cyclopentasiloxane?</div>
+                    <div class="faq-answer">D5 (Decamethylcyclopentasiloxane, CAS 541-02-6) is a cyclic silicone with 5 silicon-oxygen units. It is a colorless, odorless, volatile liquid that evaporates quickly without leaving residue, widely used as a carrier and emollient in cosmetics and personal care.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is D5 used for in cosmetics and personal care?</div>
+                    <div class="faq-answer">D5 is used in hair care (conditioners, dry shampoos), skin care (serums, sunscreens, makeup) and deodorants. It provides a silky, non-greasy skin feel, improves spreadability of actives, reduces drying time and acts as a volatile carrier. Industrial uses include precision cleaning and defoaming.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is D5 safe and regulatory compliant?</div>
+                    <div class="faq-answer">D5 from Moon Technology is cosmetic-grade (≥99% purity), FDA-listed for cosmetic use and REACH registered. Note: EU REACH restricts D5 above 0.1% in wash-off cosmetic products; it remains approved for leave-on products and industrial applications. Compliance documentation available on request.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between D4, D5 and D6?</div>
+                    <div class="faq-answer">D4, D5 and D6 are cyclic siloxanes with 4, 5 and 6 silicon-oxygen units. D5 is preferred in cosmetics for its balanced volatility and skin feel. D6 evaporates more slowly; D4 is the most volatile and faces stricter EU restrictions. Moon Technology supplies both D5 (CAS 541-02-6) and D6.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do you formulate D5 in hair or skin care?</div>
+                    <div class="faq-answer">Typical use level is 5-20% of the formulation. D5 is compatible with dimethicone, natural oils, esters and most cosmetic ingredients. Add at room temperature with gentle stirring. For anhydrous systems it can be the main carrier phase.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the price and MOQ of D5?</div>
+                    <div class="faq-answer">Factory-direct price from $8/kg with volume discounts. MOQ: free sample 1 kg; bulk order from 25 kg drums up to 200 kg. 24-hour quote response and worldwide shipping with full documentation.</div>
                 </div>
             </div>
         </div>

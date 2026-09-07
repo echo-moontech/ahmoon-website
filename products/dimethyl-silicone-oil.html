@@ -359,7 +359,73 @@
             .app-grid { grid-template-columns: 1fr; }
             .showcase-grid { grid-template-columns: 1fr; }
         }
+        /* FAQ Section */
+        .faq-section { background: var(--bg); padding: 80px 0; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .faq-question { color: var(--primary); font-size: 17px; font-weight: 600; margin-bottom: 12px; cursor: pointer; }
+        .faq-question::before { content: "Q: "; color: var(--primary); font-weight: 700; }
+        .faq-answer { color: var(--text); font-size: 15px; line-height: 1.7; }
+        .faq-answer::before { content: "A: "; color: #22c55e; font-weight: 700; }
     </style>
+    
+    <!-- FAQPage Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is dimethyl silicone oil (PDMS)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dimethyl silicone oil (Polydimethylsiloxane, PDMS, CAS 63148-62-9) is a clear, odorless, non-toxic silicone fluid with outstanding thermal stability, low surface tension and strong water repellency. Moon Technology supplies viscosities from 100cst to 10000cst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which viscosity of silicone oil should I choose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "100cst: thin film release and polishing. 350cst: general purpose damping, dielectric and lubrication. 1000cst: heat transfer fluid, personal care and optical coupling. 5000/10000cst: high-damping fluids and plastic-rubber lubrication. Contact Moon Technology for a free viscosity recommendation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is dimethyl silicone oil food grade and FDA compliant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Food-grade PDMS meets FDA 21 CFR 173.340 (defoaming in food processing) and is REACH registered. Industrial and cosmetic grades also available. COA with purity ≥99% provided with every batch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the main applications of silicone oil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heat transfer fluids, hydraulic damping fluids, electrical insulation, personal care (hair and skin), plastic and rubber lubrication, mold release agents, defoamers, polishes and optical coupling media. Moon Technology 201 series covers all these applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is silicone oil soluble in water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Dimethyl silicone oil is hydrophobic and insoluble in water and ethanol. It is miscible with toluene, xylene, hexane and most non-polar solvents. For water-based systems, use an emulsifier or a pre-made silicone emulsion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the price and MOQ of dimethyl silicone oil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Factory-direct price from $4/kg with volume discounts. MOQ: free sample 1 kg; bulk 25 kg, 200 kg drums or 1000 kg IBC. All 5 viscosities in stock. 24-hour quote response."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Top Bar: Language Switcher -->
@@ -606,6 +672,41 @@
                     <h4 data-i18n="docMSDS">⚠️ Safety Data Sheet</h4>
                     <p data-i18n="docMSDSdesc">Handling &amp; safety information</p>
                 </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What is dimethyl silicone oil (PDMS)?</div>
+                    <div class="faq-answer">Dimethyl silicone oil (Polydimethylsiloxane, PDMS, CAS 63148-62-9) is a clear, odorless, non-toxic silicone fluid with outstanding thermal stability, low surface tension and strong water repellency. Moon Technology supplies viscosities from 100cst to 10000cst.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Which viscosity of silicone oil should I choose?</div>
+                    <div class="faq-answer">100cst: thin film release and polishing. 350cst: general purpose damping, dielectric and lubrication. 1000cst: heat transfer fluid, personal care and optical coupling. 5000/10000cst: high-damping fluids and plastic-rubber lubrication. Contact Moon Technology for a free viscosity recommendation.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is dimethyl silicone oil food grade and FDA compliant?</div>
+                    <div class="faq-answer">Yes. Food-grade PDMS meets FDA 21 CFR 173.340 (defoaming in food processing) and is REACH registered. Industrial and cosmetic grades also available. COA with purity ≥99% provided with every batch.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are the main applications of silicone oil?</div>
+                    <div class="faq-answer">Heat transfer fluids, hydraulic damping fluids, electrical insulation, personal care (hair and skin), plastic and rubber lubrication, mold release agents, defoamers, polishes and optical coupling media. Moon Technology 201 series covers all these applications.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is silicone oil soluble in water?</div>
+                    <div class="faq-answer">No. Dimethyl silicone oil is hydrophobic and insoluble in water and ethanol. It is miscible with toluene, xylene, hexane and most non-polar solvents. For water-based systems, use an emulsifier or a pre-made silicone emulsion.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the price and MOQ of dimethyl silicone oil?</div>
+                    <div class="faq-answer">Factory-direct price from $4/kg with volume discounts. MOQ: free sample 1 kg; bulk 25 kg, 200 kg drums or 1000 kg IBC. All 5 viscosities in stock. 24-hour quote response.</div>
+                </div>
             </div>
         </div>
     </section>

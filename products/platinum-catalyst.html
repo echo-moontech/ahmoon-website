@@ -87,7 +87,73 @@
         footer a { color: #fff; text-decoration: none; }
 
         @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; } .app-grid { grid-template-columns: 1fr; } .showcase-grid { grid-template-columns: 1fr; } }
+        /* FAQ Section */
+        .faq-section { background: var(--bg); padding: 80px 0; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .faq-question { color: var(--primary); font-size: 17px; font-weight: 600; margin-bottom: 12px; cursor: pointer; }
+        .faq-question::before { content: "Q: "; color: var(--primary); font-weight: 700; }
+        .faq-answer { color: var(--text); font-size: 15px; line-height: 1.7; }
+        .faq-answer::before { content: "A: "; color: #22c55e; font-weight: 700; }
     </style>
+    
+    <!-- FAQPage Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a platinum (Karstedt) catalyst?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Karstedt platinum catalyst (CAS 68478-92-2) is a platinum(0)-divinyltetramethyldisiloxane complex dissolved in vinyl-terminated PDMS. 8000ppm means 8000 ppm (0.8%) platinum content. It catalyzes hydrosilylation addition-cure reactions in LSR, RTV-2 and HTV silicone systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much platinum catalyst should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical addition is 0.5-2.0% by weight of the total silicone base for RTV-2 systems, equal to roughly 5-20 ppm platinum. Higher dosage shortens cure time; lower dosage extends pot life. Lab testing is recommended to optimize your formulation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the catalyst need heat-pack shipping in winter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At low temperatures the carrier fluid can thicken or the platinum complex may precipitate, affecting dosing accuracy and cure consistency. Moon Technology ships with heat packs in winter to keep the catalyst fluid and active on arrival. Store at 5-30°C in a sealed container."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between 5000ppm and 8000ppm catalyst?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Same chemistry, different platinum concentration. 8000ppm delivers more activity per gram and is more economical for large batches; 5000ppm is easier to dose accurately for small trials. Both available from Moon Technology; custom concentrations on request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can poison or inhibit a platinum catalyst?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avoid contact with sulfur compounds, amines, organotin compounds, and plasticizers or mold-release agents containing these groups. Use clean mixing equipment and test raw material compatibility before production. Even trace contamination can slow or stop curing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the catalyst suitable for food-contact silicone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. When fully cured, addition-cure silicone made with this platinum catalyst can meet FDA 21 CFR 177.2600 for food-contact rubber articles. The catalyst is REACH registered and manufactured under ISO 9001:2015."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -215,6 +281,41 @@
                 <div class="app-card">
                     <h3 data-i18n="app6Title">🎨 Silicone Adhesives &amp; Coatings</h3>
                     <p data-i18n="app6Desc">Addition-cure pressure-sensitive adhesives and protective coatings for aerospace, automotive and industrial surfaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What is a platinum (Karstedt) catalyst?</div>
+                    <div class="faq-answer">The Karstedt platinum catalyst (CAS 68478-92-2) is a platinum(0)-divinyltetramethyldisiloxane complex dissolved in vinyl-terminated PDMS. 8000ppm means 8000 ppm (0.8%) platinum content. It catalyzes hydrosilylation addition-cure reactions in LSR, RTV-2 and HTV silicone systems.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How much platinum catalyst should I use?</div>
+                    <div class="faq-answer">Typical addition is 0.5-2.0% by weight of the total silicone base for RTV-2 systems, equal to roughly 5-20 ppm platinum. Higher dosage shortens cure time; lower dosage extends pot life. Lab testing is recommended to optimize your formulation.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why does the catalyst need heat-pack shipping in winter?</div>
+                    <div class="faq-answer">At low temperatures the carrier fluid can thicken or the platinum complex may precipitate, affecting dosing accuracy and cure consistency. Moon Technology ships with heat packs in winter to keep the catalyst fluid and active on arrival. Store at 5-30°C in a sealed container.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between 5000ppm and 8000ppm catalyst?</div>
+                    <div class="faq-answer">Same chemistry, different platinum concentration. 8000ppm delivers more activity per gram and is more economical for large batches; 5000ppm is easier to dose accurately for small trials. Both available from Moon Technology; custom concentrations on request.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What can poison or inhibit a platinum catalyst?</div>
+                    <div class="faq-answer">Avoid contact with sulfur compounds, amines, organotin compounds, and plasticizers or mold-release agents containing these groups. Use clean mixing equipment and test raw material compatibility before production. Even trace contamination can slow or stop curing.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is the catalyst suitable for food-contact silicone?</div>
+                    <div class="faq-answer">Yes. When fully cured, addition-cure silicone made with this platinum catalyst can meet FDA 21 CFR 177.2600 for food-contact rubber articles. The catalyst is REACH registered and manufactured under ISO 9001:2015.</div>
                 </div>
             </div>
         </div>

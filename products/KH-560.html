@@ -240,7 +240,73 @@
             .product-grid { grid-template-columns: 1fr; }
             .app-grid { grid-template-columns: 1fr; }
         }
+        /* FAQ Section */
+        .faq-section { background: var(--bg); padding: 80px 0; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .faq-question { color: var(--primary); font-size: 17px; font-weight: 600; margin-bottom: 12px; cursor: pointer; }
+        .faq-question::before { content: "Q: "; color: var(--primary); font-weight: 700; }
+        .faq-answer { color: var(--text); font-size: 15px; line-height: 1.7; }
+        .faq-answer::before { content: "A: "; color: #22c55e; font-weight: 700; }
     </style>
+    
+    <!-- FAQPage Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is KH-560 silane coupling agent used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KH-560 (3-Glycidoxypropyltrimethoxysilane, CAS 2530-83-8) is an epoxy-functional silane coupling agent used as an adhesion promoter in epoxy resins, polyurethane, acrylic coatings, sealants and adhesives. It chemically bonds organic polymers to inorganic surfaces such as glass, aluminum and steel, improving adhesion strength and moisture resistance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the CAS number and specification of KH-560?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CAS number: 2530-83-8. Chemical formula C9H20O5Si, molecular weight 236.34. Appearance: colorless transparent liquid. Purity ≥98%. Density 1.065 g/cm3 at 25°C. Moon Technology supplies in 25 kg plastic drums."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between KH-550 and KH-560?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KH-550 is amino-functional (NH2 group), best for glass fiber and epoxy/phenolic systems. KH-560 is epoxy-functional (epoxy ring), best for coatings, adhesives and sealants on metal and glass substrates, and for systems cured with amines or anhydrides. KH-560 usually gives better wet adhesion in epoxy coatings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the MOQ and price of KH-560?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MOQ: 1 kg free sample; bulk 25 kg or 200 kg drums. Factory-direct price from $6/kg with volume discount. 24-hour quote response. TDS, MSDS and COA provided with every shipment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you use KH-560 in coatings and adhesives?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical dosage is 0.5-2% of total formulation. Pre-mix KH-560 into the resin phase before adding the hardener or curing agent. For waterborne systems, hydrolyze in water/ethanol at pH 4-5 for 15-30 minutes before adding. Full adhesion develops after complete cure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is KH-560 FDA and REACH compliant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. KH-560 from Moon Technology is REACH registered and ISO 9001:2015 certified. It meets FDA 21 CFR 175.300 for food-contact resinous coatings when properly formulated. Free technical support for your specific application."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <nav class="breadcrumb">
@@ -382,6 +448,41 @@
                     <h4>⚠️ Safety Data Sheet</h4>
                     <p>Handling & safety information</p>
                 </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What is KH-560 silane coupling agent used for?</div>
+                    <div class="faq-answer">KH-560 (3-Glycidoxypropyltrimethoxysilane, CAS 2530-83-8) is an epoxy-functional silane coupling agent used as an adhesion promoter in epoxy resins, polyurethane, acrylic coatings, sealants and adhesives. It chemically bonds organic polymers to inorganic surfaces such as glass, aluminum and steel, improving adhesion strength and moisture resistance.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the CAS number and specification of KH-560?</div>
+                    <div class="faq-answer">CAS number: 2530-83-8. Chemical formula C9H20O5Si, molecular weight 236.34. Appearance: colorless transparent liquid. Purity ≥98%. Density 1.065 g/cm3 at 25°C. Moon Technology supplies in 25 kg plastic drums.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between KH-550 and KH-560?</div>
+                    <div class="faq-answer">KH-550 is amino-functional (NH2 group), best for glass fiber and epoxy/phenolic systems. KH-560 is epoxy-functional (epoxy ring), best for coatings, adhesives and sealants on metal and glass substrates, and for systems cured with amines or anhydrides. KH-560 usually gives better wet adhesion in epoxy coatings.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the MOQ and price of KH-560?</div>
+                    <div class="faq-answer">MOQ: 1 kg free sample; bulk 25 kg or 200 kg drums. Factory-direct price from $6/kg with volume discount. 24-hour quote response. TDS, MSDS and COA provided with every shipment.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do you use KH-560 in coatings and adhesives?</div>
+                    <div class="faq-answer">Typical dosage is 0.5-2% of total formulation. Pre-mix KH-560 into the resin phase before adding the hardener or curing agent. For waterborne systems, hydrolyze in water/ethanol at pH 4-5 for 15-30 minutes before adding. Full adhesion develops after complete cure.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is KH-560 FDA and REACH compliant?</div>
+                    <div class="faq-answer">Yes. KH-560 from Moon Technology is REACH registered and ISO 9001:2015 certified. It meets FDA 21 CFR 175.300 for food-contact resinous coatings when properly formulated. Free technical support for your specific application.</div>
+                </div>
             </div>
         </div>
     </section>
