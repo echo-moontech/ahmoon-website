@@ -450,7 +450,7 @@
 (function(){
   function makeDraggable(el){
     var key = 'floatPos_' + (el.id || (el.className||'').split(/\s+/).filter(Boolean).join('_'));
-    var ps = null, hasMoved = false, isDown = false;
+    var ps = null, hasMoved = false, isDown = false, hrefBackup = null;
     try {
       var s = JSON.parse(localStorage.getItem(key) || 'null');
       if (s && typeof s.left === 'number' && typeof s.bottom === 'number') {
@@ -459,8 +459,10 @@
         el.style.right = 'auto';
       }
     } catch(e){}
-    el.style.cursor = 'grab';
+    el.style.setProperty('cursor', 'grab', 'important');
     el.style.touchAction = 'none';
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
     el.addEventListener('pointerdown', function(e){
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       isDown = true; hasMoved = false;
@@ -468,12 +470,19 @@
       ps = { x: e.clientX, y: e.clientY, left: r.left, bottom: window.innerHeight - r.bottom };
       try { el.setPointerCapture(e.pointerId); } catch(err){}
       el.style.transition = 'none';
-      el.style.cursor = 'grabbing';
+      el.style.setProperty('cursor', 'grabbing', 'important');
+      // Strip href during drag for <a> elements so the browser can't navigate
+      if (el.tagName === 'A' && el.hasAttribute('href')) {
+        hrefBackup = el.getAttribute('href');
+        el.removeAttribute('href');
+      }
+      // Prevent default to suppress native drag/text-select start
+      if (e.cancelable) e.preventDefault();
     });
     el.addEventListener('pointermove', function(e){
       if (!isDown || !ps) return;
       var dx = e.clientX - ps.x, dy = e.clientY - ps.y;
-      if (!hasMoved && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) hasMoved = true;
+      if (!hasMoved && (Math.abs(dx) > 3 || Math.abs(dy) > 3)) hasMoved = true;
       if (!hasMoved) return;
       var r = el.getBoundingClientRect();
       var nl = Math.max(0, Math.min(window.innerWidth - r.width, ps.left + dx));
@@ -486,7 +495,7 @@
       if (!isDown) return;
       isDown = false;
       try { el.releasePointerCapture(e.pointerId); } catch(err){}
-      el.style.cursor = 'grab';
+      el.style.setProperty('cursor', 'grab', 'important');
       el.style.transition = '';
       if (hasMoved) {
         var r = el.getBoundingClientRect();
@@ -498,7 +507,11 @@
         el.style.bottom = tb + 'px';
         setTimeout(function(){ el.style.transition = ''; }, 260);
         try { localStorage.setItem(key, JSON.stringify({ left: tl, bottom: tb })); } catch(err){}
+      } else if (hrefBackup) {
+        // Pure click (no movement) — re-enable navigation
+        el.setAttribute('href', hrefBackup);
       }
+      hrefBackup = null;
       ps = null;
     }
     el.addEventListener('pointerup', end);
@@ -511,6 +524,8 @@
       }
       hasMoved = false;
     }, true);
+    // Suppress browser-native drag (image/selection) on the element
+    el.addEventListener('dragstart', function(e){ e.preventDefault(); });
   }
   function init(){
     var wa = document.getElementById('floatingWhatsApp');
