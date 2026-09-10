@@ -1631,7 +1631,7 @@
     .float-quote-btn {
         position: fixed;
         bottom: 24px;
-        right: 24px;
+        left: 24px;
         z-index: 998;
         background: linear-gradient(135deg, #e67e22, #d35400);
         color: #fff;
@@ -1641,6 +1641,7 @@
         font-size: 15px;
         font-weight: 700;
         cursor: pointer;
+        cursor: grab;
         box-shadow: 0 4px 16px rgba(211,84,0,0.4);
         display: flex;
         align-items: center;
@@ -1656,7 +1657,7 @@
         transform: translateY(0);
     }
     @media (max-width: 600px) {
-        .float-quote-btn { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 14px; }
+        .float-quote-btn { bottom: 16px; left: 16px; padding: 12px 18px; font-size: 14px; }
     }
     </style>
 </head>
@@ -4301,6 +4302,87 @@ m145:'M-145',d10:'D-10 / MTAS',d15:'D-15 / ETAS',d16:'D-16 / PTAS',d20:'D-20 / M
     <button class="float-quote-btn" onclick="openInquiryForm('')">
         💬 <span data-i18n="floatQuoteBtn">Get Quote</span>
     </button>
+
+<script>
+(function(){
+  function makeDraggable(el){
+    var key = 'floatPos_' + (el.id || (el.className||'').split(/\s+/).filter(Boolean).join('_'));
+    var ps = null, hasMoved = false, isDown = false;
+    try {
+      var s = JSON.parse(localStorage.getItem(key) || 'null');
+      if (s && typeof s.left === 'number' && typeof s.bottom === 'number') {
+        el.style.left = s.left + 'px';
+        el.style.bottom = s.bottom + 'px';
+        el.style.right = 'auto';
+      }
+    } catch(e){}
+    el.style.cursor = 'grab';
+    el.style.touchAction = 'none';
+    el.addEventListener('pointerdown', function(e){
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      isDown = true; hasMoved = false;
+      var r = el.getBoundingClientRect();
+      ps = { x: e.clientX, y: e.clientY, left: r.left, bottom: window.innerHeight - r.bottom };
+      try { el.setPointerCapture(e.pointerId); } catch(err){}
+      el.style.transition = 'none';
+      el.style.cursor = 'grabbing';
+    });
+    el.addEventListener('pointermove', function(e){
+      if (!isDown || !ps) return;
+      var dx = e.clientX - ps.x, dy = e.clientY - ps.y;
+      if (!hasMoved && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) hasMoved = true;
+      if (!hasMoved) return;
+      var r = el.getBoundingClientRect();
+      var nl = Math.max(0, Math.min(window.innerWidth - r.width, ps.left + dx));
+      var nb = Math.max(0, Math.min(window.innerHeight - r.height, ps.bottom - dy));
+      el.style.left = nl + 'px';
+      el.style.bottom = nb + 'px';
+      el.style.right = 'auto';
+    });
+    function end(e){
+      if (!isDown) return;
+      isDown = false;
+      try { el.releasePointerCapture(e.pointerId); } catch(err){}
+      el.style.cursor = 'grab';
+      el.style.transition = '';
+      if (hasMoved) {
+        var r = el.getBoundingClientRect();
+        var cx = r.left + r.width / 2;
+        var tl = cx < window.innerWidth / 2 ? 16 : window.innerWidth - r.width - 16;
+        var tb = Math.max(16, Math.min(window.innerHeight - r.height - 16, window.innerHeight - r.bottom));
+        el.style.transition = 'left .25s ease, bottom .25s ease';
+        el.style.left = tl + 'px';
+        el.style.bottom = tb + 'px';
+        setTimeout(function(){ el.style.transition = ''; }, 260);
+        try { localStorage.setItem(key, JSON.stringify({ left: tl, bottom: tb })); } catch(err){}
+      }
+      ps = null;
+    }
+    el.addEventListener('pointerup', end);
+    el.addEventListener('pointercancel', end);
+    el.addEventListener('click', function(e){
+      if (hasMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
+      hasMoved = false;
+    }, true);
+  }
+  function init(){
+    var wa = document.getElementById('floatingWhatsApp');
+    var qb = document.querySelector('.float-quote-btn');
+    if (wa) makeDraggable(wa);
+    if (qb) makeDraggable(qb);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body>
 </html>
 
