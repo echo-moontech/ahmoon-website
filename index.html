@@ -1624,6 +1624,49 @@
         .faq-question::before { content: "Q: "; color: var(--primary); font-weight: 700; }
         .faq-answer { color: var(--text); font-size: 15px; line-height: 1.7; }
         .faq-answer::before { content: "A: "; color: #22c55e; font-weight: 700; }
+
+        /* ----- Latest Resources Section ----- */
+        .resources-section { background: var(--bg); padding: 80px 0; }
+        .resources-section .section-title { text-align: center; margin-bottom: 48px; }
+        .resources-section .section-title h2 { font-size: 32px; color: var(--text); font-weight: 700; margin-bottom: 12px; }
+        .resources-section .section-title p { color: var(--text-muted); font-size: 16px; max-width: 640px; margin: 0 auto; }
+        .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1140px; margin: 0 auto; }
+        .resource-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .resource-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+        .resource-thumb { position: relative; aspect-ratio: 16 / 10; background: var(--primary-light); overflow: hidden; }
+        .resource-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .resource-coming {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #eef2f7, #e2e8f0);
+            color: var(--text-muted); font-weight: 600; font-size: 15px; letter-spacing: 0.5px;
+        }
+        .resource-body { padding: 22px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+        .resource-tag {
+            display: inline-block; align-self: flex-start;
+            font-size: 12px; font-weight: 700; color: var(--primary);
+            background: var(--primary-light); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px;
+        }
+        .resource-card h3 { font-size: 18px; color: var(--text); font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+        .resource-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; flex: 1; }
+        .resource-link { color: var(--primary); font-weight: 600; font-size: 14px; margin-top: auto; }
+        .resource-card--soon { opacity: 0.92; }
+        .resource-card--soon:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--border); }
+        .resource-soon-label { color: var(--accent); font-weight: 600; font-size: 13px; margin-top: auto; }
+        @media (max-width: 860px) {
+            .resources-grid { grid-template-columns: 1fr; max-width: 420px; }
+            .resources-section .section-title h2 { font-size: 26px; }
+        }
     </style>
 
     <!-- Floating Quote Button -->
@@ -2575,6 +2618,54 @@
         </div>
     </section>
 
+    <!-- Latest Resources Section -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="resourcesTitle">Latest Resources</h2>
+                <p data-i18n="resourcesSubtitle">Technical guides, application notes &amp; selection tips for silicone materials.</p>
+            </div>
+            <div class="resources-grid">
+                <!-- Card 1: KH-550 (live) -->
+                <a href="/articles/kh-550-3-aminopropyltriethoxysilane.html" class="resource-card" style="text-decoration:none;color:inherit;display:block;">
+                    <div class="resource-thumb">
+                        <img src="/images/550-02.png" alt="MOON-KH550 amino silane coupling agent product" loading="lazy">
+                    </div>
+                    <div class="resource-body">
+                        <span class="resource-tag">📖 <span data-i18n="tagTechnicalGuide">Technical Guide</span></span>
+                        <h3 data-i18n="resourceKh550Title">KH-550 Amino Silane: A Chemical Bridge</h3>
+                        <p data-i18n="resourceKh550Desc">How amino silane couples organic polymers to inorganic surfaces — chemistry, applications and dosage.</p>
+                        <span class="resource-link" data-i18n="readMore">Read More →</span>
+                    </div>
+                </a>
+                <!-- Card 2: KH-560 (coming soon) -->
+                <div class="resource-card resource-card--soon">
+                    <div class="resource-thumb">
+                        <div class="resource-coming"><span data-i18n="comingSoon">Coming Soon</span></div>
+                    </div>
+                    <div class="resource-body">
+                        <span class="resource-tag">📖 <span data-i18n="tagTechnicalGuide">Technical Guide</span></span>
+                        <h3 data-i18n="resourceKh560Title">KH-560 Epoxy Silane: Technical Guide</h3>
+                        <p data-i18n="resourceKh560Desc">Epoxy-functional silane for adhesion promotion in composites and coatings.</p>
+                        <span class="resource-soon-label" data-i18n="comingSoonHint">In preparation</span>
+                    </div>
+                </div>
+                <!-- Card 3: Silicone Oil Selection (coming soon) -->
+                <div class="resource-card resource-card--soon">
+                    <div class="resource-thumb">
+                        <div class="resource-coming"><span data-i18n="comingSoon">Coming Soon</span></div>
+                    </div>
+                    <div class="resource-body">
+                        <span class="resource-tag">📖 <span data-i18n="tagSelectionGuide">Selection Guide</span></span>
+                        <h3 data-i18n="resourceOilTitle">Silicone Oil Selection Guide</h3>
+                        <p data-i18n="resourceOilDesc">How to choose viscosity, type and grade for your silicone oil application.</p>
+                        <span class="resource-soon-label" data-i18n="comingSoonHint">In preparation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Factory Section --><!-- Factory Section -->
     <section class="factory" id="factory">
         <div class="container">
@@ -2823,6 +2914,19 @@
                 cert: "Certificates",
                 contact: "Contact",
                 resources: "Resources",
+                resourcesTitle: "Latest Resources",
+                resourcesSubtitle: "Technical guides, application notes & selection tips for silicone materials.",
+                tagTechnicalGuide: "Technical Guide",
+                tagSelectionGuide: "Selection Guide",
+                resourceKh550Title: "KH-550 Amino Silane: A Chemical Bridge",
+                resourceKh550Desc: "How amino silane couples organic polymers to inorganic surfaces — chemistry, applications and dosage.",
+                resourceKh560Title: "KH-560 Epoxy Silane: Technical Guide",
+                resourceKh560Desc: "Epoxy-functional silane for adhesion promotion in composites and coatings.",
+                resourceOilTitle: "Silicone Oil Selection Guide",
+                resourceOilDesc: "How to choose viscosity, type and grade for your silicone oil application.",
+                comingSoon: "Coming Soon",
+                comingSoonHint: "In preparation",
+                readMore: "Read More \u2192",
                 searchPlaceholder: "Search products...",
                 searchNoResults: "\u{1F615} No products found matching your search. Try a different keyword.",
                 heroTitle: "OEM & ODM",
@@ -3020,6 +3124,19 @@
                 cert: "资质认证",
                 contact: "联系我们",
                 resources: "资源中心",
+                resourcesTitle: "最新资源",
+                resourcesSubtitle: "有机硅材料的技术指南、应用说明与选型技巧。",
+                tagTechnicalGuide: "技术指南",
+                tagSelectionGuide: "选型指南",
+                resourceKh550Title: "KH-550 氨基硅烷：连接有机与无机的化学桥梁",
+                resourceKh550Desc: "氨基硅烷如何将有机聚合物与无机表面化学键合——机理、应用与用量。",
+                resourceKh560Title: "KH-560 环氧硅烷：技术指南",
+                resourceKh560Desc: "用于复合材料与涂料附着力促进的环氧官能硅烷。",
+                resourceOilTitle: "硅油选型指南",
+                resourceOilDesc: "如何根据应用选择硅油的粘度、类型与等级。",
+                comingSoon: "敬请期待",
+                comingSoonHint: "筹备中",
+                readMore: "阅读全文 →",
                 searchPlaceholder: "搜索产品...",
                 searchNoResults: "😕 未找到匹配的产品,请尝试其他关键词。",
                 heroTitle: "OEM & ODM",
@@ -3216,6 +3333,19 @@
                 cert: "Certificados",
                 contact: "Contacto",
                 resources: "Recursos",
+                resourcesTitle: "Últimos Recursos",
+                resourcesSubtitle: "Guías técnicas, notas de aplicación y consejos de selección para materiales de silicona.",
+                tagTechnicalGuide: "Guía Técnica",
+                tagSelectionGuide: "Guía de Selección",
+                resourceKh550Title: "KH-550 Silano Aminado: Un Puente Químico",
+                resourceKh550Desc: "Cómo el silano aminado acopla polímeros orgánicos a superficies inorgánicas — química, aplicaciones y dosificación.",
+                resourceKh560Title: "KH-560 Silano Epoxi: Guía Técnica",
+                resourceKh560Desc: "Silano funcional epoxi para promover la adhesión en compuestos y recubrimientos.",
+                resourceOilTitle: "Guía de Selección de Aceite de Silicona",
+                resourceOilDesc: "Cómo elegir viscosidad, tipo y grado para su aplicación de aceite de silicona.",
+                comingSoon: "Próximamente",
+                comingSoonHint: "En preparación",
+                readMore: "Leer más →",
                 searchPlaceholder: "Buscar productos...",
                 searchNoResults: "😕 No se encontraron productos que coincidan con su búsqueda. Intente con una palabra clave diferente.",
                 heroTitle: "OEM & ODM",
