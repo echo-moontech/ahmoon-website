@@ -197,7 +197,7 @@
         .company-brand img:hover {
             transform: scale(1.05);
         }
-        .company-brand h1 {
+        .company-brand h1, .company-brand .brand-name {
             font-size: 20px;
             color: var(--text);
             font-weight: 700;
@@ -404,11 +404,15 @@
             text-align: center;
             color: #fff;
         }
-        .hero h2 {
-            font-size: 52px;
+        .hero h1 {
+            font-size: 38px;
             font-weight: 900;
             margin-bottom: 16px;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
+            line-height: 1.25;
+            max-width: 980px;
+            margin-left: auto;
+            margin-right: auto;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
         }
         .hero p {
@@ -531,6 +535,21 @@
             border-radius: 6px;
             transition: var(--transition);
             letter-spacing: 1px;
+            border: 2px solid transparent;
+        }
+        .hero-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.75);
+        }
+        .hero-btn.secondary:hover {
+            background: rgba(255,255,255,0.15);
+            box-shadow: none;
         }
         .hero-btn:hover {
             transform: translateY(-2px);
@@ -1438,7 +1457,7 @@
                 flex-direction: column;
                 gap: 12px;
             }
-            .company-brand h1 {
+            .company-brand h1, .company-brand .brand-name {
                 font-size: 16px;
             }
             .service-tags {
@@ -1493,8 +1512,8 @@
             .hero {
                 min-height: 360px;
             }
-            .hero h2 {
-                font-size: 28px;
+            .hero h1 {
+                font-size: 20px;
             }
             .hero p {
                 font-size: 15px;
@@ -1594,8 +1613,8 @@
             .product-card .product-image {
                 height: 120px;
             }
-            .hero h2 {
-                font-size: 24px;
+            .hero h1 {
+                font-size: 18px;
             }
             .about-stats {
                 grid-template-columns: 1fr;
@@ -1710,7 +1729,7 @@
         <div class="container">
             <div class="company-brand">
                 <img src="images/logo.jpg" alt="Moon Technology Logo">
-                <h1>ANHUI MOON TECHNOLOGY CO., LTD</h1>
+                <div class="brand-name">ANHUI MOON TECHNOLOGY CO., LTD</div>
             </div>
             <div class="service-tags">
                 <div class="service-tag">
@@ -1762,15 +1781,18 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h2 data-i18n="heroTitle">OEM & ODM</h2>
-            <p data-i18n="heroDesc">Stable quality, efficient and high-quality services for global customers</p>
+            <h1 data-i18n="heroTitle">Silane Coupling Agent, Silicone Oil &amp; Platinum Catalyst Manufacturer in China</h1>
+            <p data-i18n="heroDesc">KH-550 · KH-560 · KH-570 &amp; 50+ Organosilicon Products · REACH &amp; FDA 21 CFR · Factory Direct Price, Free 1 kg Sample, 24h Quote</p>
             <div class="hero-features">
-                <div class="hero-feature" data-i18n="heroFeat1">✓ Qualified Products</div>
-                <div class="hero-feature" data-i18n="heroFeat2">✓ Competitive Prices</div>
-                <div class="hero-feature" data-i18n="heroFeat3">✓ Fast Delivery</div>
-                <div class="hero-feature" data-i18n="heroFeat4">✓ Technical Support</div>
+                <div class="hero-feature" data-i18n="heroFeat1">✓ KH-550 / 560 / 570 Silane ≥99% Purity</div>
+                <div class="hero-feature" data-i18n="heroFeat2">✓ Dimethyl / Phenyl Silicone Oil 100–10,000 cst</div>
+                <div class="hero-feature" data-i18n="heroFeat3">✓ Platinum Catalyst Karstedt 8000 ppm</div>
+                <div class="hero-feature" data-i18n="heroFeat4">✓ RTV-2 Silicone Rubber for Molding</div>
             </div>
-            <a href="#products" class="hero-btn" data-i18n="viewMore">VIEW MORE >></a>
+            <div class="hero-btn-group">
+                <a href="#contact" class="hero-btn" data-i18n="heroCta1">Request Free Sample</a>
+                <a href="#products" class="hero-btn secondary" data-i18n="heroCta2">View 50+ Products →</a>
+            </div>
             <div class="hero-trust">
                                 <span class="trust-badge">🌍 REACH Compliant</span>
                 <span class="trust-badge">⭐ 4.9/5 Alibaba Rating</span>
@@ -2957,13 +2979,15 @@
                 readMore: "Read More \u2192",
                 searchPlaceholder: "Search products...",
                 searchNoResults: "\u{1F615} No products found matching your search. Try a different keyword.",
-                heroTitle: "OEM & ODM",
-                heroDesc: "Stable quality, efficient and high-quality services for global customers",
-                heroFeat1: "\u2713 Qualified Products",
-                heroFeat2: "\u2713 Competitive Prices",
-                heroFeat3: "\u2713 Fast Delivery",
-                heroFeat4: "\u2713 Technical Support",
-                viewMore: "VIEW MORE >>",
+                heroTitle: "Silane Coupling Agent, Silicone Oil & Platinum Catalyst Manufacturer in China",
+                heroDesc: "KH-550 · KH-560 · KH-570 & 50+ Organosilicon Products · REACH & FDA 21 CFR · Factory Direct Price, Free 1 kg Sample, 24h Quote",
+                heroFeat1: "✓ KH-550 / 560 / 570 Silane ≥99% Purity",
+                heroFeat2: "✓ Dimethyl / Phenyl Silicone Oil 100–10,000 cst",
+                heroFeat3: "✓ Platinum Catalyst Karstedt 8000 ppm",
+                heroFeat4: "✓ RTV-2 Silicone Rubber for Molding",
+                viewMore: "View 50+ Products →",
+                heroCta1: "Request Free Sample",
+                heroCta2: "View 50+ Products →",
                 aboutTitle: "Company Profile",
                 aboutSubtitle: "Professional Silicone Products Manufacturer",
                 aboutCompanyName: "Anhui Moon Technology Co., Ltd.",
@@ -3172,13 +3196,15 @@
                 readMore: "阅读全文 →",
                 searchPlaceholder: "搜索产品...",
                 searchNoResults: "😕 未找到匹配的产品,请尝试其他关键词。",
-                heroTitle: "OEM & ODM",
-                heroDesc: "稳定品质,为全球客户提供高效优质服务",
-                heroFeat1: "✓ 优质产品",
-                heroFeat2: "✓ 竞争力价格",
-                heroFeat3: "✓ 快速交货",
-                heroFeat4: "✓ 技术支持",
-                viewMore: "查看更多 >>",
+                heroTitle: "中国硅烷偶联剂、硅油与铂金催化剂制造商",
+                heroDesc: "KH-550 · KH-560 · KH-570 及 50+ 有机硅产品 · 符合 REACH 与 FDA 21 CFR · 工厂直销价,免费 1 公斤样品,24 小时报价",
+                heroFeat1: "✓ KH-550 / 560 / 570 硅烷 ≥99% 纯度",
+                heroFeat2: "✓ 二甲基 / 苯基硅油 100–10,000 cst",
+                heroFeat3: "✓ 铂金催化剂 Karstedt 8000 ppm",
+                heroFeat4: "✓ 模具用 RTV-2 硅橡胶",
+                viewMore: "查看 50+ 产品 →",
+                heroCta1: "申请免费样品",
+                heroCta2: "查看 50+ 产品 →",
                 aboutTitle: "公司简介",
                 aboutSubtitle: "专业有机硅产品制造商",
                 aboutCompanyName: "安徽幕蒽科技有限公司",
@@ -3386,13 +3412,15 @@
                 readMore: "Leer más →",
                 searchPlaceholder: "Buscar productos...",
                 searchNoResults: "😕 No se encontraron productos que coincidan con su búsqueda. Intente con una palabra clave diferente.",
-                heroTitle: "OEM & ODM",
-                heroDesc: "Calidad estable, servicios eficientes y de alta calidad para clientes globales",
-                heroFeat1: "✓ Productos Calificados",
-                heroFeat2: "✓ Precios Competitivos",
-                heroFeat3: "✓ Entrega Rápida",
-                heroFeat4: "✓ Soporte Técnico",
-                viewMore: "VER MÁS >>",
+                heroTitle: "Fabricante en China de Silano de Acoplamiento, Aceite de Silicona y Catalizador de Platino",
+                heroDesc: "KH-550 · KH-560 · KH-570 y más de 50 productos de organosilicona · Cumple REACH y FDA 21 CFR · Precio directo de fábrica, muestra gratis de 1 kg, cotización en 24 h",
+                heroFeat1: "✓ Silano KH-550 / 560 / 570 ≥99% de pureza",
+                heroFeat2: "✓ Aceite de silicona dimetil / fenil 100–10,000 cst",
+                heroFeat3: "✓ Catalizador de platino Karstedt 8000 ppm",
+                heroFeat4: "✓ Caucho de silicona RTV-2 para moldes",
+                viewMore: "Ver más de 50 productos →",
+                heroCta1: "Solicitar muestra gratis",
+                heroCta2: "Ver más de 50 productos →",
                 aboutTitle: "Perfil de Empresa",
                 aboutSubtitle: "Fabricante Profesional de Productos de Silicona",
                 aboutCompanyName: "Anhui Moon Technology Co., Ltd.",
