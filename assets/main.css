@@ -555,7 +555,7 @@
             align-items: flex-start;
         }
 
-        .cat-anchor { scroll-margin-top: 130px; grid-column: 1 / -1; height: 0; overflow: hidden; }
+        .product-card[id] { scroll-margin-top: 130px; }
 
         /* Left Category Navigation */
         .cat-nav {
@@ -707,6 +707,11 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+        }
+        @media (min-width: 1025px) {
+            .products-grid > .product-card:nth-last-child(3) {
+                grid-column: span 2;
+            }
         }
         .product-card {
             background: var(--bg-alt);
